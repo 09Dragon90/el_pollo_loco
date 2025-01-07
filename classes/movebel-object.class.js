@@ -1,7 +1,16 @@
 class MoveblaObject {
-  x;
-  y;
+  x = 120;
+  y = 250;
+  heigth = 150;
+  width = 100;
   img;
+
+  constructor() {}
+
+  loadImg(path) {
+    this.img = new Image();
+    this.img.src = path;
+  }
 
   moveRight() {
     console.log("moving Right");
