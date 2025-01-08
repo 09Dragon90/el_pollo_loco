@@ -1,6 +1,6 @@
 class MoveblaObject {
   x = 120;
-  y = 250;
+  y = 280;
   heigth = 150;
   width = 100;
   img;
