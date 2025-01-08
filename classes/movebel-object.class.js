@@ -1,6 +1,7 @@
 class MoveblaObject {
-  x = 120;
-  y = 280;
+  x = 80;
+  overGroundY = 430;
+  y;
   heigth = 150;
   width = 100;
   img;
@@ -10,6 +11,10 @@ class MoveblaObject {
   loadImg(path) {
     this.img = new Image();
     this.img.src = path;
+  }
+
+  calY(heigth, overGroundY) {
+    return overGroundY - heigth;
   }
 
   moveRight() {
