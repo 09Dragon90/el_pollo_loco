@@ -22,15 +22,20 @@ class Character extends MoveblaObject {
 
   animation() {
     setInterval(() => {
-      if (this.world.keybord.Right) {
+      if (
+        this.world.keybord.Right &&
+        this.x < this.world.level.lengthOfLevel - this.width
+      ) {
         this.x += this.speed;
         this.isFlipped = false;
       }
-      if (this.world.keybord.Left) {
+      if (this.world.keybord.Left && this.x > 0) {
         this.x -= this.speed;
         this.isFlipped = true;
       }
-      this.world.camera_x = -this.x;
+      if (this.x < this.world.level.lengthOfLevel - 620) {
+        this.world.camera_x = -this.x + 100;
+      }
     }, 1000 / 60);
 
     setInterval(() => {

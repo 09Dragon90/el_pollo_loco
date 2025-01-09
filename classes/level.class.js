@@ -3,11 +3,12 @@ class Level {
   backgroundObjects = [];
   cloud = new Cloud();
   width = 1439;
+  lengthOfLevel;
 
   constructor(numbersOfEnemies = 1, numbersOfBackground = 1) {
-    let lengthOfLevel = numbersOfBackground * this.width;
+    this.lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
-    this.createEnemies(numbersOfEnemies, lengthOfLevel);
+    this.createEnemies(numbersOfEnemies, this.lengthOfLevel);
   }
 
   createEnemies(numbers, lengthOfLevel) {
