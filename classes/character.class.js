@@ -24,10 +24,13 @@ class Character extends MoveblaObject {
     setInterval(() => {
       if (this.world.keybord.Right) {
         this.x += this.speed;
+        this.isFlipped = false;
       }
       if (this.world.keybord.Left) {
         this.x -= this.speed;
+        this.isFlipped = true;
       }
+      this.world.camera_x = -this.x;
     }, 1000 / 60);
 
     setInterval(() => {

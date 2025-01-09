@@ -11,6 +11,7 @@ class World {
   ctx;
   canvas;
   keybord;
+  camera_x = 0;
 
   constructor(canvas, keybord) {
     this.ctx = canvas.getContext("2d");
@@ -26,11 +27,13 @@ class World {
 
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.translate(this.camera_x, 0);
+
     this.addObjectsToMap(this.backgroundObjects);
     this.addToMap(this.cloud);
     this.addToMap(this.character);
     this.addObjectsToMap(this.enemies);
-
+    this.ctx.translate(-this.camera_x, 0);
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
@@ -38,7 +41,20 @@ class World {
   }
 
   addToMap(obj) {
-    this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.heigth);
+    if (obj.isFlipped) {
+      this.ctx.save();
+      this.ctx.scale(-1, 1);
+      this.ctx.drawImage(
+        obj.img,
+        obj.x * -1 - obj.width,
+        obj.y,
+        obj.width,
+        obj.heigth
+      );
+      this.ctx.restore();
+    } else {
+      this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.heigth);
+    }
   }
 
   addObjectsToMap(objArray) {

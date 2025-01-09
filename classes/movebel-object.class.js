@@ -8,6 +8,7 @@ class MoveblaObject {
   imageCache = {};
   currentImage = 0;
   speed = 0.15;
+  isFlipped = false;
 
   loadImg(path) {
     this.img = new Image();
