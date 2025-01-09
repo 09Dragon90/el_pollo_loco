@@ -13,7 +13,6 @@ class Character extends MoveblaObject {
     "assets/img/2_character_pepe/1_idle/idle/I-9.png",
     "assets/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
-  currentImage = 0;
 
   constructor() {
     super();

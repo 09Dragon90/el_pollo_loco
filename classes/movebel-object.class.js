@@ -6,8 +6,8 @@ class MoveblaObject {
   width = 100;
   img;
   imageCache = {};
-
-  constructor() {}
+  currentImage = 0;
+  speed = 0.15;
 
   loadImg(path) {
     this.img = new Image();
@@ -31,6 +31,8 @@ class MoveblaObject {
   }
 
   moveLeft() {
-    console.log("moving Left");
+    setInterval(() => {
+      this.x -= this.speed;
+    }, 1000 / 60);
   }
 }
