@@ -8,11 +8,11 @@ class Chicken extends MoveblaObject {
     "assets/img/3_enemies_chicken/chicken_normal/1_walk/3_w.png",
   ];
 
-  constructor() {
+  constructor(lengthOfLevel) {
     super();
     this.loadImg("assets/img/3_enemies_chicken/chicken_normal/1_walk/1_w.png");
     this.loadImages(this.imagesWalking);
-    this.x = 200 + 500 * Math.random();
+    this.x = 200 + (lengthOfLevel - 200) * Math.random() - this.width;
     this.y = this.calY(this.heigth, this.overGroundY);
     this.speed = 0.15 + Math.random() * 0.5;
     this.animation();

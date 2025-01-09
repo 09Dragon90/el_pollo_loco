@@ -2,58 +2,62 @@ class Level {
   enemies = [];
   backgroundObjects = [];
   cloud = new Cloud();
+  width = 1439;
 
   constructor(numbersOfEnemies = 1, numbersOfBackground = 1) {
+    let lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
-    this.createEnemies(numbersOfEnemies);
+    this.createEnemies(numbersOfEnemies, lengthOfLevel);
   }
 
-  createEnemies(numbers) {
+  createEnemies(numbers, lengthOfLevel) {
     for (let index = 0; index < numbers; index++) {
-      this.enemies.push(new Chicken());
+      this.enemies.push(new Chicken(lengthOfLevel));
     }
   }
 
   createBackground(numbers) {
-    let width = 1439;
     this.backgroundObjects = [
-      new BackgroundObject("assets/img/5_background/layers/air.png", -width),
+      new BackgroundObject(
+        "assets/img/5_background/layers/air.png",
+        -this.width
+      ),
       new BackgroundObject(
         "assets/img/5_background/layers/3_third_layer/full.png",
-        -width
+        -this.width
       ),
       new BackgroundObject(
         "assets/img/5_background/layers/2_second_layer/full.png",
-        -width
+        -this.width
       ),
       new BackgroundObject(
         "assets/img/5_background/layers/1_first_layer/full.png",
-        -width
+        -this.width
       ),
     ];
     for (let index = 0; index < numbers; index++) {
       this.backgroundObjects.push(
         new BackgroundObject(
           "assets/img/5_background/layers/air.png",
-          width * index
+          this.width * index
         )
       );
       this.backgroundObjects.push(
         new BackgroundObject(
           "assets/img/5_background/layers/3_third_layer/full.png",
-          width * index
+          this.width * index
         )
       );
       this.backgroundObjects.push(
         new BackgroundObject(
           "assets/img/5_background/layers/2_second_layer/full.png",
-          width * index
+          this.width * index
         )
       );
       this.backgroundObjects.push(
         new BackgroundObject(
           "assets/img/5_background/layers/1_first_layer/full.png",
-          width * index
+          this.width * index
         )
       );
     }

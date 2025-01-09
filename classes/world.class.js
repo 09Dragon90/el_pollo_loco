@@ -1,5 +1,5 @@
 class World {
-  level = new Level(4, 2);
+  level = new Level(4, 1);
   character = new Character();
   ctx;
   canvas;
