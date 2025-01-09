@@ -1,12 +1,7 @@
 class World {
   character = new Character();
   enemies = [new Chicken(), new Chicken(), new Chicken()];
-  backgroundObjects = [
-    new BackgroundObject("assets/img/5_background/layers/air.png"),
-    new BackgroundObject("assets/img/5_background/layers/3_third_layer/1.png"),
-    new BackgroundObject("assets/img/5_background/layers/2_second_layer/1.png"),
-    new BackgroundObject("assets/img/5_background/layers/1_first_layer/1.png"),
-  ];
+  backgroundObjects = [];
   cloud = new Cloud();
   ctx;
   canvas;
@@ -14,6 +9,7 @@ class World {
   camera_x = 0;
 
   constructor(canvas, keybord) {
+    this.craetBackground(2);
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keybord = keybord;
@@ -61,5 +57,50 @@ class World {
     objArray.forEach((obj) => {
       this.addToMap(obj);
     });
+  }
+
+  craetBackground(numbers = 0) {
+    let width = 1439;
+    this.backgroundObjects = [
+      new BackgroundObject("assets/img/5_background/layers/air.png", -width),
+      new BackgroundObject(
+        "assets/img/5_background/layers/3_third_layer/full.png",
+        -width
+      ),
+      new BackgroundObject(
+        "assets/img/5_background/layers/2_second_layer/full.png",
+        -width
+      ),
+      new BackgroundObject(
+        "assets/img/5_background/layers/1_first_layer/full.png",
+        -width
+      ),
+    ];
+    for (let index = 0; index < numbers; index++) {
+      this.backgroundObjects.push(
+        new BackgroundObject(
+          "assets/img/5_background/layers/air.png",
+          width * index
+        )
+      );
+      this.backgroundObjects.push(
+        new BackgroundObject(
+          "assets/img/5_background/layers/3_third_layer/full.png",
+          width * index
+        )
+      );
+      this.backgroundObjects.push(
+        new BackgroundObject(
+          "assets/img/5_background/layers/2_second_layer/full.png",
+          width * index
+        )
+      );
+      this.backgroundObjects.push(
+        new BackgroundObject(
+          "assets/img/5_background/layers/1_first_layer/full.png",
+          width * index
+        )
+      );
+    }
   }
 }
