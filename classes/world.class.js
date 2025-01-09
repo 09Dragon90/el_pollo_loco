@@ -10,11 +10,18 @@ class World {
   cloud = new Cloud();
   ctx;
   canvas;
+  keybord;
 
-  constructor(canvas) {
+  constructor(canvas, keybord) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
+    this.keybord = keybord;
+    this.setWorld();
     this.draw();
+  }
+
+  setWorld() {
+    this.character.world = this;
   }
 
   draw() {
