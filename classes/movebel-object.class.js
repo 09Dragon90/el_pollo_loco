@@ -5,12 +5,21 @@ class MoveblaObject {
   heigth = 150;
   width = 100;
   img;
+  imageCache = {};
 
   constructor() {}
 
   loadImg(path) {
     this.img = new Image();
     this.img.src = path;
+  }
+
+  loadImages(arr) {
+    arr.forEach((path) => {
+      this.img = new Image();
+      this.img.src = path;
+      this.imageCache[path] = this.img;
+    });
   }
 
   calY(heigth, overGroundY) {
