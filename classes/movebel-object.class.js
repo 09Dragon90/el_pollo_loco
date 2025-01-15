@@ -28,13 +28,15 @@ class MoveblaObject {
   }
 
   moveRight() {
-    console.log("moving Right");
+    this.x += this.speed;
   }
 
   moveLeft() {
-    setInterval(() => {
-      this.x -= this.speed;
-    }, 1000 / 60);
+    this.x -= this.speed;
+  }
+
+  jump() {
+    this.speedY = 20;
   }
 
   animatedImages(images) {

@@ -19,7 +19,10 @@ class Chicken extends MoveblaObject {
   }
 
   animation() {
-    this.moveLeft();
+    setInterval(() => {
+      this.moveLeft();
+    }, 1000 / 60);
+
     setInterval(() => {
       this.animatedImages(this.imagesWalking);
     }, 200);

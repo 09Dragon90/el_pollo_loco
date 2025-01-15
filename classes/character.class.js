@@ -59,16 +59,16 @@ class Character extends MoveblaObject {
         this.x < this.world.level.lengthOfLevel - this.width
       ) {
         this.walking_sound.play();
-        this.x += this.speed;
         this.isFlipped = false;
+        this.moveRight();
       }
       if (this.world.keybord.Left && this.x > 0) {
         this.walking_sound.play();
-        this.x -= this.speed;
         this.isFlipped = true;
+        this.moveLeft();
       }
       if (this.world.keybord.Up && !this.isOverGroung()) {
-        this.speedY = 20;
+        this.jump();
       }
       if (this.x < this.world.level.lengthOfLevel - 620) {
         this.world.camera_x = -this.x + 100;
@@ -84,9 +84,5 @@ class Character extends MoveblaObject {
         }
       }
     }, 100);
-  }
-
-  jump() {
-    console.log("jump");
   }
 }
