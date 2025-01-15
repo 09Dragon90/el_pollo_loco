@@ -15,6 +15,7 @@ class Level {
     for (let index = 0; index < numbers; index++) {
       this.enemies.push(new Chicken(lengthOfLevel));
     }
+    this.enemies.push(new Endboss(lengthOfLevel));
   }
 
   createBackground(numbers) {
