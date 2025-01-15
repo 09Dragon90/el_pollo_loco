@@ -15,7 +15,7 @@ class Endboss extends MoveblaObject {
 
   constructor(lengthOfLevel) {
     super();
-    this.loadImg("assets/img/4_enemie_boss_chicken/2_alert/G5.png");
+    this.loadImg(this.imagesWalking[0]);
     this.loadImages(this.imagesWalking);
     this.x = lengthOfLevel - this.width - 50;
     this.y = this.calY(this.heigth, this.overGroundY) + 10;

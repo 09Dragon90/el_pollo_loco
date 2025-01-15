@@ -15,7 +15,7 @@ class Character extends MoveblaObject {
 
   constructor() {
     super();
-    this.loadImg("assets/img/2_character_pepe/2_walk/W-21.png");
+    this.loadImg(this.imagesWalk[0]);
     this.loadImages(this.imagesWalk);
     this.y = this.calY(this.heigth, this.overGroundY);
     this.animation();
