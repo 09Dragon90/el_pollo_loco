@@ -44,10 +44,7 @@ class Character extends MoveblaObject {
 
     setInterval(() => {
       if (this.world.keybord.Right || this.world.keybord.Left) {
-        let i = this.currentImage % this.imagesWalk.length;
-        let path = this.imagesWalk[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+        this.animatedImages(this.imagesWalk);
       }
     }, 100);
   }
