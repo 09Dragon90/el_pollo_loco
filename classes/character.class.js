@@ -11,6 +11,7 @@ class Character extends MoveblaObject {
     "assets/img/2_character_pepe/2_walk/W-25.png",
     "assets/img/2_character_pepe/2_walk/W-26.png",
   ];
+  walking_sound = new Audio("assets/audio/walking.mp3");
 
   constructor() {
     super();
@@ -22,14 +23,17 @@ class Character extends MoveblaObject {
 
   animation() {
     setInterval(() => {
+      this.walking_sound.pause();
       if (
         this.world.keybord.Right &&
         this.x < this.world.level.lengthOfLevel - this.width
       ) {
+        this.walking_sound.play();
         this.x += this.speed;
         this.isFlipped = false;
       }
       if (this.world.keybord.Left && this.x > 0) {
+        this.walking_sound.play();
         this.x -= this.speed;
         this.isFlipped = true;
       }
