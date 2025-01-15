@@ -1,5 +1,5 @@
 class Chicken extends MoveblaObject {
-  heigth = 70;
+  height = 70;
   width = 70;
 
   imagesWalking = [
@@ -13,7 +13,7 @@ class Chicken extends MoveblaObject {
     this.loadImg(this.imagesWalking[0]);
     this.loadImages(this.imagesWalking);
     this.x = 200 + (lengthOfLevel - 200) * Math.random() - this.width;
-    this.y = this.calY(this.heigth, this.overGroundY);
+    this.y = this.calY(this.height, this.overGroundY);
     this.speed = 0.15 + Math.random() * 0.5;
     this.animation();
   }

@@ -1,7 +1,7 @@
 class Cloud extends MoveblaObject {
   x = 0;
   y = 0;
-  heigth = 300;
+  height = 300;
   width = 720;
 
   constructor() {

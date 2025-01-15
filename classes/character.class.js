@@ -1,5 +1,5 @@
 class Character extends MoveblaObject {
-  heigth = 280;
+  height = 280;
   width = 120;
   speed = 5;
   ground;
@@ -32,7 +32,7 @@ class Character extends MoveblaObject {
     this.loadImg(this.imagesWalk[0]);
     this.loadImages(this.imagesWalk);
     this.loadImages(this.imagesJump);
-    this.y = this.calY(this.heigth, this.overGroundY);
+    this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
     this.animation();
     this.applyGravity();
@@ -67,7 +67,7 @@ class Character extends MoveblaObject {
         this.isFlipped = true;
         this.moveLeft();
       }
-      if (this.world.keybord.Up && !this.isOverGroung()) {
+      if (this.world.keybord.Space && !this.isOverGroung()) {
         this.jump();
       }
       if (this.x < this.world.level.lengthOfLevel - 620) {

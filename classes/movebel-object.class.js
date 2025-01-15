@@ -2,13 +2,14 @@ class MoveblaObject {
   x = 80;
   overGroundY = 430;
   y;
-  heigth = 150;
+  height = 150;
   width = 100;
   img;
   imageCache = {};
   currentImage = 0;
   speed = 0.15;
   isFlipped = false;
+  offsety = 0;
 
   loadImg(path) {
     this.img = new Image();
@@ -23,8 +24,8 @@ class MoveblaObject {
     });
   }
 
-  calY(heigth, overGroundY) {
-    return overGroundY - heigth;
+  calY(height, overGroundY) {
+    return overGroundY - height;
   }
 
   moveRight() {
@@ -44,5 +45,28 @@ class MoveblaObject {
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
+  }
+
+  drawBorder(ctx) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss
+    ) {
+      ctx.beginPath();
+      ctx.lineWidth = "4";
+      ctx.strokeStyle = "green";
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();
+    }
+  }
+
+  isColliding(obj) {
+    return (
+      this.x + this.width >= obj.x &&
+      this.x <= obj.x + obj.width &&
+      this.y + this.offsety + this.height >= obj.y &&
+      this.y + this.offsety <= obj.y + obj.height
+    );
   }
 }

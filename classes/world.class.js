@@ -14,6 +14,17 @@ class World {
     this.level = levels.level1;
     this.setWorld();
     this.draw();
+    this.checkColloction();
+  }
+
+  checkColloction() {
+    setInterval(() => {
+      this.level.enemies.forEach((enemy) => {
+        if (this.character.isColliding(enemy)) {
+          console.log("Kollission erkannt");
+        }
+      });
+    }, 200);
   }
 
   setWorld() {
@@ -23,7 +34,6 @@ class World {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
-
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.level.cloud);
     this.addToMap(this.character);
@@ -44,12 +54,13 @@ class World {
         obj.x * -1 - obj.width,
         obj.y,
         obj.width,
-        obj.heigth
+        obj.height
       );
       this.ctx.restore();
     } else {
-      this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.heigth);
+      this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
     }
+    obj.drawBorder(this.ctx);
   }
 
   addObjectsToMap(objArray) {

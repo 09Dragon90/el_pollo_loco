@@ -1,5 +1,5 @@
 class Endboss extends MoveblaObject {
-  heigth = 350;
+  height = 350;
   width = 250;
 
   imagesWalking = [
@@ -18,7 +18,7 @@ class Endboss extends MoveblaObject {
     this.loadImg(this.imagesWalking[0]);
     this.loadImages(this.imagesWalking);
     this.x = lengthOfLevel - this.width - 50;
-    this.y = this.calY(this.heigth, this.overGroundY) + 10;
+    this.y = this.calY(this.height, this.overGroundY) + 10;
     this.animation();
   }
 

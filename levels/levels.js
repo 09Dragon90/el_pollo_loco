@@ -1,1 +1,1 @@
-const levels = { level1: new Level(4, 1) };
+const levels = { level1: new Level(1, 1) };
