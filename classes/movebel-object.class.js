@@ -11,6 +11,7 @@ class MoveblaObject {
   isFlipped = false;
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
+  energy = 100;
 
   loadImg(path) {
     this.img = new Image();
@@ -19,9 +20,9 @@ class MoveblaObject {
 
   loadImages(arr) {
     arr.forEach((path) => {
-      this.img = new Image();
-      this.img.src = path;
-      this.imageCache[path] = this.img;
+      let img = new Image();
+      img.src = path;
+      this.imageCache[path] = img;
     });
   }
 
@@ -85,5 +86,13 @@ class MoveblaObject {
       y: this.y + offsetYT,
       height: this.height - offsetYT - offsetYB,
     };
+  }
+
+  hit() {
+    if (!this.isDead()) this.energy -= 5;
+  }
+
+  isDead() {
+    return this.energy <= 0;
   }
 }

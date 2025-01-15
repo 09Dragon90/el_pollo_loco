@@ -1,7 +1,6 @@
 class Character extends MoveblaObject {
   height = 280;
   width = 120;
-
   speed = 5;
   ground;
   world;
@@ -26,13 +25,36 @@ class Character extends MoveblaObject {
     "assets/img/2_character_pepe/3_jump/J-38.png",
     "assets/img/2_character_pepe/3_jump/J-39.png",
   ];
+  imagesDead = [
+    "assets/img/2_character_pepe/5_dead/D-51.png",
+    "assets/img/2_character_pepe/5_dead/D-52.png",
+    "assets/img/2_character_pepe/5_dead/D-53.png",
+    "assets/img/2_character_pepe/5_dead/D-54.png",
+    "assets/img/2_character_pepe/5_dead/D-55.png",
+    "assets/img/2_character_pepe/5_dead/D-56.png",
+    "assets/img/2_character_pepe/5_dead/D-57.png",
+  ];
+  imagesIdle = [
+    "assets/img/2_character_pepe/1_idle/idle/I-1.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-2.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-3.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-4.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-5.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-6.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-7.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-8.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-9.png",
+    "assets/img/2_character_pepe/1_idle/idle/I-10.png",
+  ];
   walking_sound = new Audio("assets/audio/walking.mp3");
 
   constructor() {
     super();
-    this.loadImg(this.imagesWalk[0]);
+    this.loadImg(this.imagesIdle[0]);
+    this.loadImages(this.imagesIdle);
     this.loadImages(this.imagesWalk);
     this.loadImages(this.imagesJump);
+    this.loadImages(this.imagesDead);
     this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
     this.setHitbox(100, 10, 15, 15);
@@ -79,12 +101,14 @@ class Character extends MoveblaObject {
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isOverGroung()) {
+      if (this.isDead()) {
+        this.animatedImages(this.imagesDead);
+      } else if (this.isOverGroung()) {
         this.animatedImages(this.imagesJump);
+      } else if (this.world.keybord.Right || this.world.keybord.Left) {
+        this.animatedImages(this.imagesWalk);
       } else {
-        if (this.world.keybord.Right || this.world.keybord.Left) {
-          this.animatedImages(this.imagesWalk);
-        }
+        this.animatedImages(this.imagesIdle);
       }
     }, 100);
   }
