@@ -1,5 +1,5 @@
 class World {
-  level = new Level(4, 1);
+  level;
   character = new Character();
   ctx;
   canvas;
@@ -7,10 +7,11 @@ class World {
   d;
   camera_x = 0;
 
-  constructor(canvas, keybord) {
+  constructor(canvas, keybord, levels) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keybord = keybord;
+    this.level = levels.level1;
     this.setWorld();
     this.draw();
   }
