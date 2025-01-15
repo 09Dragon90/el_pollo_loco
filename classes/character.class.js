@@ -1,6 +1,7 @@
 class Character extends MoveblaObject {
   height = 280;
   width = 120;
+
   speed = 5;
   ground;
   world;
@@ -34,6 +35,7 @@ class Character extends MoveblaObject {
     this.loadImages(this.imagesJump);
     this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
+    this.setHitbox(100, 10, 15, 15);
     this.animation();
     this.applyGravity();
   }
@@ -42,6 +44,7 @@ class Character extends MoveblaObject {
     setInterval(() => {
       if (this.isOverGroung() || this.speedY > 0) {
         this.y -= this.speedY;
+        this.hitbox.y -= this.speedY;
         this.speedY -= this.acceleration;
       }
     }, 1000 / 25);

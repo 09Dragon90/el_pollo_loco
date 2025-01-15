@@ -15,6 +15,7 @@ class Chicken extends MoveblaObject {
     this.x = 200 + (lengthOfLevel - 200) * Math.random() - this.width;
     this.y = this.calY(this.height, this.overGroundY);
     this.speed = 0.15 + Math.random() * 0.5;
+    this.setHitbox(0, 0, 0, 0);
     this.animation();
   }
 

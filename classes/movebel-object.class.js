@@ -10,6 +10,7 @@ class MoveblaObject {
   speed = 0.15;
   isFlipped = false;
   offsety = 0;
+  hitbox = { x: 0, y: 0, height: 0, width: 0 };
 
   loadImg(path) {
     this.img = new Image();
@@ -30,10 +31,12 @@ class MoveblaObject {
 
   moveRight() {
     this.x += this.speed;
+    this.hitbox.x += this.speed;
   }
 
   moveLeft() {
     this.x -= this.speed;
+    this.hitbox.x -= this.speed;
   }
 
   jump() {
@@ -55,18 +58,32 @@ class MoveblaObject {
     ) {
       ctx.beginPath();
       ctx.lineWidth = "4";
-      ctx.strokeStyle = "green";
-      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.strokeStyle = "red";
+      ctx.rect(
+        this.hitbox.x,
+        this.hitbox.y,
+        this.hitbox.width,
+        this.hitbox.height
+      );
       ctx.stroke();
     }
   }
 
   isColliding(obj) {
     return (
-      this.x + this.width >= obj.x &&
-      this.x <= obj.x + obj.width &&
-      this.y + this.offsety + this.height >= obj.y &&
-      this.y + this.offsety <= obj.y + obj.height
+      this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
+      this.hitbox.x <= obj.hitbox.x + obj.hitbox.width &&
+      this.hitbox.y + this.hitbox.height >= obj.hitbox.y &&
+      this.hitbox.y <= obj.hitbox.y + obj.hitbox.height
     );
+  }
+
+  setHitbox(offsetYT, offsetYB, offsetXL, offsetXR) {
+    this.hitbox = {
+      x: this.x + offsetXL,
+      width: this.width - offsetXL - offsetXR,
+      y: this.y + offsetYT,
+      height: this.height - offsetYT - offsetYB,
+    };
   }
 }

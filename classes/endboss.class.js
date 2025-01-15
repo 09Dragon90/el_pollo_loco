@@ -19,6 +19,7 @@ class Endboss extends MoveblaObject {
     this.loadImages(this.imagesWalking);
     this.x = lengthOfLevel - this.width - 50;
     this.y = this.calY(this.height, this.overGroundY) + 10;
+    this.setHitbox(50, 10, 0, 0);
     this.animation();
   }
 
