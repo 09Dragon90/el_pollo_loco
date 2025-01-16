@@ -1,4 +1,4 @@
-class DrawbelObject {
+class DrawableObject {
   x;
   y;
   height;

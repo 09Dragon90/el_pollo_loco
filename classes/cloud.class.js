@@ -1,4 +1,4 @@
-class Cloud extends MoveblaObject {
+class Cloud extends MoveableObject {
   x = 0;
   y = 0;
   height = 300;

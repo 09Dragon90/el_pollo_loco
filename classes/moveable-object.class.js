@@ -1,4 +1,4 @@
-class MoveblaObject extends DrawbelObject {
+class MoveableObject extends DrawableObject {
   x = 80;
   y;
   height = 150;
