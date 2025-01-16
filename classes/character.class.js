@@ -46,6 +46,11 @@ class Character extends MoveblaObject {
     "assets/img/2_character_pepe/1_idle/idle/I-9.png",
     "assets/img/2_character_pepe/1_idle/idle/I-10.png",
   ];
+  imagesHurt = [
+    "assets/img/2_character_pepe/4_hurt/H-41.png",
+    "assets/img/2_character_pepe/4_hurt/H-42.png",
+    "assets/img/2_character_pepe/4_hurt/H-43.png",
+  ];
   walking_sound = new Audio("assets/audio/walking.mp3");
 
   constructor() {
@@ -55,6 +60,7 @@ class Character extends MoveblaObject {
     this.loadImages(this.imagesWalk);
     this.loadImages(this.imagesJump);
     this.loadImages(this.imagesDead);
+    this.loadImages(this.imagesHurt);
     this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
     this.setHitbox(100, 10, 15, 15);
@@ -81,18 +87,19 @@ class Character extends MoveblaObject {
       this.walking_sound.pause();
       if (
         this.world.keybord.Right &&
-        this.x < this.world.level.lengthOfLevel - this.width
+        this.x < this.world.level.lengthOfLevel - this.width &&
+        !this.isDead()
       ) {
         this.walking_sound.play();
         this.isFlipped = false;
         this.moveRight();
       }
-      if (this.world.keybord.Left && this.x > 0) {
+      if (this.world.keybord.Left && this.x > 0 && !this.isDead()) {
         this.walking_sound.play();
         this.isFlipped = true;
         this.moveLeft();
       }
-      if (this.world.keybord.Space && !this.isOverGroung()) {
+      if (this.world.keybord.Space && !this.isOverGroung() && !this.isDead()) {
         this.jump();
       }
       if (this.x < this.world.level.lengthOfLevel - 620) {
@@ -103,6 +110,8 @@ class Character extends MoveblaObject {
     setInterval(() => {
       if (this.isDead()) {
         this.animatedImages(this.imagesDead);
+      } else if (this.isHurt()) {
+        this.animatedImages(this.imagesHurt);
       } else if (this.isOverGroung()) {
         this.animatedImages(this.imagesJump);
       } else if (this.world.keybord.Right || this.world.keybord.Left) {

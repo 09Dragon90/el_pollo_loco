@@ -12,6 +12,7 @@ class MoveblaObject {
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
   energy = 100;
+  lastHit = 0;
 
   loadImg(path) {
     this.img = new Image();
@@ -89,10 +90,19 @@ class MoveblaObject {
   }
 
   hit() {
-    if (!this.isDead()) this.energy -= 5;
+    if (!this.isDead() && !this.isHurt()) {
+      this.energy -= 5;
+      this.lastHit = new Date().getTime();
+      console.log(this.energy);
+    }
   }
 
   isDead() {
     return this.energy <= 0;
+  }
+
+  isHurt() {
+    let timeDifference = (new Date().getTime() - this.lastHit) / 1000;
+    return timeDifference < 1;
   }
 }
