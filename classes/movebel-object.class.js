@@ -1,31 +1,15 @@
-class MoveblaObject {
+class MoveblaObject extends DrawbelObject {
   x = 80;
-  overGroundY = 430;
   y;
   height = 150;
   width = 100;
-  img;
-  imageCache = {};
-  currentImage = 0;
+  overGroundY = 430;
   speed = 0.15;
   isFlipped = false;
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
   energy = 100;
   lastHit = 0;
-
-  loadImg(path) {
-    this.img = new Image();
-    this.img.src = path;
-  }
-
-  loadImages(arr) {
-    arr.forEach((path) => {
-      let img = new Image();
-      img.src = path;
-      this.imageCache[path] = img;
-    });
-  }
 
   calY(height, overGroundY) {
     return overGroundY - height;
