@@ -1,0 +1,5 @@
+ToDo:
+
+- Flasche werfen
+- Flaschen sammeln
+- Coins sammeln
