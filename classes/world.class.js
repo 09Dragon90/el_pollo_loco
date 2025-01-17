@@ -1,6 +1,11 @@
 class World {
   level;
   character = new Character();
+  bars = [
+    new StatusBar(10, 0, 100, "health", "green"),
+    new StatusBar(10, 40, 0, "coin", "blue"),
+    new StatusBar(10, 80, 0, "bottle", "orange"),
+  ];
   ctx;
   canvas;
   keybord;
@@ -22,6 +27,7 @@ class World {
       this.level.enemies.forEach((enemy) => {
         if (this.character.isColliding(enemy)) {
           this.character.hit();
+          this.bars[0].setPercent(this.character.energy);
         }
       });
     }, 200);
@@ -36,6 +42,9 @@ class World {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
     this.addToMap(this.level.cloud);
+    this.ctx.translate(-this.camera_x, 0);
+    this.addObjectsToMap(this.bars);
+    this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
     this.ctx.translate(-this.camera_x, 0);

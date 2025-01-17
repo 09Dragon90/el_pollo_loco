@@ -36,25 +36,6 @@ class MoveableObject extends DrawableObject {
     this.currentImage++;
   }
 
-  drawBorder(ctx) {
-    if (
-      this instanceof Character ||
-      this instanceof Chicken ||
-      this instanceof Endboss
-    ) {
-      ctx.beginPath();
-      ctx.lineWidth = "4";
-      ctx.strokeStyle = "red";
-      ctx.rect(
-        this.hitbox.x,
-        this.hitbox.y,
-        this.hitbox.width,
-        this.hitbox.height
-      );
-      ctx.stroke();
-    }
-  }
-
   isColliding(obj) {
     return (
       this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
@@ -77,7 +58,6 @@ class MoveableObject extends DrawableObject {
     if (!this.isDead() && !this.isHurt()) {
       this.energy -= 5;
       this.lastHit = new Date().getTime();
-      console.log(this.energy);
     }
   }
 
