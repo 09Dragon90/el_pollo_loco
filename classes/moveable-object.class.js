@@ -47,7 +47,7 @@ class MoveableObject extends DrawableObject {
     );
   }
 
-  setHitbox(offsetYT, offsetYB, offsetXL, offsetXR) {
+  setHitbox(offsetYT = 0, offsetYB = 0, offsetXL = 0, offsetXR = 0) {
     this.hitbox = {
       x: this.x + offsetXL,
       width: this.width - offsetXL - offsetXR,
