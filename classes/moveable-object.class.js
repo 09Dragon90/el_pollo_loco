@@ -56,6 +56,15 @@ class MoveableObject extends DrawableObject {
     };
   }
 
+  deletHitbox() {
+    this.hitbox = {
+      x: 0,
+      width: 0,
+      y: 0,
+      height: 0,
+    };
+  }
+
   hit() {
     if (!this.isDead() && !this.isHurt()) {
       this.energy -= 5;

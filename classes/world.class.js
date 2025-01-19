@@ -10,7 +10,6 @@ class World {
   ctx;
   canvas;
   keybord;
-  d;
   camera_x = 0;
 
   constructor(canvas, keybord, levels) {
@@ -20,18 +19,33 @@ class World {
     this.level = levels.level1;
     this.setWorld();
     this.draw();
-    this.checkColloction();
+    this.checkColloctions();
   }
 
-  checkColloction() {
+  checkColloctions() {
     setInterval(() => {
+      this.collitionCharacter();
+      this.collitionBottle();
+    }, 200);
+  }
+
+  collitionCharacter() {
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit();
+        this.bars[0].setPercent(this.character.energy);
+      }
+    });
+  }
+
+  collitionBottle() {
+    this.bottles.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)) {
-          this.character.hit();
-          this.bars[0].setPercent(this.character.energy);
+        if (bottle.isColliding(enemy)) {
+          enemy.hit();
         }
       });
-    }, 200);
+    });
   }
 
   setWorld() {

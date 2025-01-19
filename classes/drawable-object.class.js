@@ -6,6 +6,7 @@ class DrawableObject {
   img;
   imageCache = {};
   currentImage = 0;
+  intervalIds = [];
 
   loadImg(path) {
     this.img = new Image();
@@ -38,5 +39,16 @@ class DrawableObject {
       );
       ctx.stroke();
     }
+  }
+
+  stoppableInterval(interval) {
+    let id = interval;
+    this.intervalIds.push(id);
+  }
+
+  stopIntervals() {
+    this.intervalIds.forEach((id) => {
+      clearInterval(id);
+    });
   }
 }
