@@ -1,10 +1,8 @@
 class Character extends MoveableObject {
   height = 280;
   width = 120;
-  speedX = 5;
   ground;
   world;
-  acceleration = 2;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -62,19 +60,10 @@ class Character extends MoveableObject {
     this.loadImages(this.imagesHurt);
     this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
+    this.speedX = 5;
     this.setHitbox(100, 10, 15, 15);
     this.animation();
     this.applyGravity();
-  }
-
-  applyGravity() {
-    setInterval(() => {
-      if (this.isOverGroung() || this.speedY > 0) {
-        this.y -= this.speedY;
-        this.hitbox.y -= this.speedY;
-        this.speedY -= this.acceleration;
-      }
-    }, 1000 / 25);
   }
 
   isOverGroung() {

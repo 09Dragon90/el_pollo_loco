@@ -11,6 +11,7 @@ class MoveableObject extends DrawableObject {
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
   energy = 100;
   lastHit = 0;
+  acceleration = 2;
 
   calY(height, overGroundY) {
     return overGroundY - height;
@@ -69,5 +70,15 @@ class MoveableObject extends DrawableObject {
   isHurt() {
     let timeDifference = (new Date().getTime() - this.lastHit) / 1000;
     return timeDifference < 1;
+  }
+
+  applyGravity() {
+    setInterval(() => {
+      if (this.isOverGroung() || this.speedY > 0) {
+        this.y -= this.speedY;
+        this.hitbox.y -= this.speedY;
+        this.speedY -= this.acceleration;
+      }
+    }, 1000 / 25);
   }
 }
