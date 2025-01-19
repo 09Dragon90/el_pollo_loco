@@ -1,5 +1,8 @@
 ToDo:
 
-- Flasche werfen
+- Flasche splash
+- Endboss hit
+- Flaschen anzeigen
 - Flaschen sammeln
+- Coins anzeigen
 - Coins sammeln
