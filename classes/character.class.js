@@ -80,7 +80,7 @@ class Character extends MoveableObject {
         this.isFlipped = false;
         this.moveRight();
       }
-      if (this.world.keybord.Left && this.x > 0 && !this.isDead()) {
+      if (this.world.keybord.Left && this.x > -600 && !this.isDead()) {
         this.walking_sound.play();
         this.isFlipped = true;
         this.moveLeft();
