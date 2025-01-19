@@ -20,6 +20,7 @@ class ThrowableObject extends MoveableObject {
   throw() {
     setInterval(() => {
       this.x += 20;
+      this.animatedImages(this.images);
     }, 1000 / 25);
   }
 }
