@@ -4,7 +4,7 @@ class Character extends MoveableObject {
   ground;
   world;
   bottleIsThrow = false;
-  numbersOfBottles = 10;
+  numbersOfBottles = 100;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -94,7 +94,10 @@ class Character extends MoveableObject {
         this.numbersOfBottles > 0
       ) {
         this.world.bottles.push(
-          new ThrowableObject(this.x + this.width, this.y)
+          new ThrowableObject(
+            this.x + this.width - 50,
+            this.y + this.height / 2
+          )
         );
         this.numbersOfBottles--;
         this.bottleIsThrow = true;
