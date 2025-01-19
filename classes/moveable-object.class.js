@@ -5,6 +5,7 @@ class MoveableObject extends DrawableObject {
   width = 100;
   overGroundY = 430;
   speedX = 0.15;
+  speedY = 0;
   isFlipped = false;
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };

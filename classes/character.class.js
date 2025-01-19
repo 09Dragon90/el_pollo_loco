@@ -4,7 +4,6 @@ class Character extends MoveableObject {
   speedX = 5;
   ground;
   world;
-  speedY = 0;
   acceleration = 2;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
