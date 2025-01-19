@@ -6,6 +6,7 @@ class World {
     new StatusBar(10, 40, 0, "coin", "blue"),
     new StatusBar(10, 80, 0, "bottle", "orange"),
   ];
+  bottles = [];
   ctx;
   canvas;
   keybord;
@@ -47,6 +48,7 @@ class World {
     this.ctx.translate(this.camera_x, 0);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.bottles);
     this.ctx.translate(-this.camera_x, 0);
     let self = this;
     requestAnimationFrame(function () {

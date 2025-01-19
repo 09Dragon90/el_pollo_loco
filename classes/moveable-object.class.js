@@ -81,4 +81,8 @@ class MoveableObject extends DrawableObject {
       }
     }, 1000 / 25);
   }
+
+  isOverGroung() {
+    return this.y < this.ground;
+  }
 }

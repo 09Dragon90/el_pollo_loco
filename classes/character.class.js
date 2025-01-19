@@ -3,6 +3,8 @@ class Character extends MoveableObject {
   width = 120;
   ground;
   world;
+  bottleIsThrow = false;
+  numbersOfBottles = 10;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -66,10 +68,6 @@ class Character extends MoveableObject {
     this.applyGravity();
   }
 
-  isOverGroung() {
-    return this.y < this.ground;
-  }
-
   animation() {
     setInterval(() => {
       this.walking_sound.pause();
@@ -87,8 +85,22 @@ class Character extends MoveableObject {
         this.isFlipped = true;
         this.moveLeft();
       }
-      if (this.world.keybord.Space && !this.isOverGroung() && !this.isDead()) {
+      if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
         this.jump();
+      }
+      if (
+        this.world.keybord.Space &&
+        !this.bottleIsThrow &&
+        this.numbersOfBottles > 0
+      ) {
+        this.world.bottles.push(
+          new ThrowableObject(this.x + this.width, this.y)
+        );
+        this.numbersOfBottles--;
+        this.bottleIsThrow = true;
+        setTimeout(() => {
+          this.bottleIsThrow = false;
+        }, 100);
       }
       if (this.x < this.world.level.lengthOfLevel - 620) {
         this.world.camera_x = -this.x + 100;
