@@ -4,7 +4,7 @@ class MoveableObject extends DrawableObject {
   height = 150;
   width = 100;
   overGroundY = 430;
-  speed = 0.15;
+  speedX = 0.15;
   isFlipped = false;
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
@@ -16,13 +16,13 @@ class MoveableObject extends DrawableObject {
   }
 
   moveRight() {
-    this.x += this.speed;
-    this.hitbox.x += this.speed;
+    this.x += this.speedX;
+    this.hitbox.x += this.speedX;
   }
 
   moveLeft() {
-    this.x -= this.speed;
-    this.hitbox.x -= this.speed;
+    this.x -= this.speedX;
+    this.hitbox.x -= this.speedX;
   }
 
   jump() {

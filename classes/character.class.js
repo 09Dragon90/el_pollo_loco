@@ -1,7 +1,7 @@
 class Character extends MoveableObject {
   height = 280;
   width = 120;
-  speed = 5;
+  speedX = 5;
   ground;
   world;
   speedY = 0;
