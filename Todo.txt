@@ -1,6 +1,5 @@
 ToDo:
 
-- Flasche splash
 - Endboss hit
 - Endboss aufwecken
 - Endboss sterben
