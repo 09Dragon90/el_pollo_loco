@@ -62,6 +62,7 @@ class World {
     this.ctx.translate(-this.camera_x, 0);
     this.addObjectsToMap(this.bars);
     this.ctx.translate(this.camera_x, 0);
+    this.addObjectsToMap(this.level.collectableItems);
     this.addObjectsToMap(this.level.enemies);
     this.addToMap(this.character);
     this.addObjectsToMap(this.bottles);

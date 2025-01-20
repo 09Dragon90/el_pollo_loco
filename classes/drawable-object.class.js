@@ -32,7 +32,8 @@ class DrawableObject {
       this instanceof Character ||
       this instanceof Chicken ||
       this instanceof Endboss ||
-      this instanceof ThrowableObject
+      this instanceof ThrowableObject ||
+      this instanceof CollectableObject
     ) {
       ctx.beginPath();
       ctx.lineWidth = "4";
@@ -57,5 +58,25 @@ class DrawableObject {
       clearInterval(id);
     });
     this.intervalIds = [];
+  }
+
+  setHitbox(offsetYT = 0, offsetYB = 0, offsetXL = 0, offsetXR = 0) {
+    this.hitbox = {
+      active: true,
+      x: this.x + offsetXL,
+      width: this.width - offsetXL - offsetXR,
+      y: this.y + offsetYT,
+      height: this.height - offsetYT - offsetYB,
+    };
+  }
+
+  deletHitbox() {
+    this.hitbox = {
+      active: false,
+      x: 0,
+      width: 0,
+      y: 0,
+      height: 0,
+    };
   }
 }

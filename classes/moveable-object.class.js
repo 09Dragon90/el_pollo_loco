@@ -62,26 +62,6 @@ class MoveableObject extends DrawableObject {
     );
   }
 
-  setHitbox(offsetYT = 0, offsetYB = 0, offsetXL = 0, offsetXR = 0) {
-    this.hitbox = {
-      active: true,
-      x: this.x + offsetXL,
-      width: this.width - offsetXL - offsetXR,
-      y: this.y + offsetYT,
-      height: this.height - offsetYT - offsetYB,
-    };
-  }
-
-  deletHitbox() {
-    this.hitbox = {
-      active: false,
-      x: 0,
-      width: 0,
-      y: 0,
-      height: 0,
-    };
-  }
-
   hit() {
     if (!this.isDead() && !this.isHurt()) {
       this.energy -= 5;
