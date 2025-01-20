@@ -43,6 +43,8 @@ class World {
       this.level.enemies.forEach((enemy) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
+          bottle.splash();
+          this.deletedInstanz(bottle, this.bottles, 700);
         }
       });
     });
@@ -83,7 +85,11 @@ class World {
       );
       this.ctx.restore();
     } else {
-      this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
+      try {
+        this.ctx.drawImage(obj.img, obj.x, obj.y, obj.width, obj.height);
+      } catch (error) {
+        console.warn(error);
+      }
     }
     obj.drawBorder(this.ctx);
   }
@@ -92,5 +98,12 @@ class World {
     objArray.forEach((obj) => {
       this.addToMap(obj);
     });
+  }
+
+  deletedInstanz(obj, array, time) {
+    setTimeout(() => {
+      const index = array.findIndex((e) => e.instanzId == obj.instanzId);
+      array.splice(index, 1);
+    }, time);
   }
 }

@@ -50,5 +50,6 @@ class DrawableObject {
     this.intervalIds.forEach((id) => {
       clearInterval(id);
     });
+    this.intervalIds = [];
   }
 }

@@ -17,6 +17,7 @@ class ThrowableObject extends MoveableObject {
 
   constructor(x, y) {
     super();
+    this.createdId();
     this.x = x;
     this.y = y;
     this.height = 70;
@@ -32,10 +33,25 @@ class ThrowableObject extends MoveableObject {
   }
 
   throw() {
-    setInterval(() => {
-      this.x += 15;
-      this.hitbox.x += 15;
-      this.animatedImages(this.imagesRotaition);
-    }, 1000 / 25);
+    this.stoppableInterval(
+      setInterval(() => {
+        this.x += 15;
+        this.hitbox.x += 15;
+        this.animatedImages(this.imagesRotaition);
+      }, 1000 / 25)
+    );
+  }
+
+  splash() {
+    this.stopIntervals();
+    this.deletHitbox();
+    this.currentImage = 0;
+    this.stoppableInterval(
+      setInterval(() => {
+        if (this.animatedImagesOnce(this.imagesSplash)) {
+          this.stopIntervals();
+        }
+      }, 1000 / 15)
+    );
   }
 }

@@ -12,6 +12,13 @@ class MoveableObject extends DrawableObject {
   energy = 100;
   lastHit = 0;
   acceleration = 2;
+  instanzId;
+
+  createdId() {
+    const timestamp = Date.now();
+    const randomNumber = Math.floor(Math.random() * 1e8);
+    this.instanzId = `${timestamp}${randomNumber}`;
+  }
 
   calY(height, overGroundY) {
     return overGroundY - height;
@@ -28,6 +35,7 @@ class MoveableObject extends DrawableObject {
   }
 
   jump() {
+    this.currentImage = 0;
     this.speedY = 20;
   }
 
@@ -38,17 +46,31 @@ class MoveableObject extends DrawableObject {
     this.currentImage++;
   }
 
+  animatedImagesOnce(images) {
+    if (this.currentImage < images.length) {
+      let i = this.currentImage % images.length;
+      let path = images[i];
+      this.img = this.imageCache[path];
+      this.currentImage++;
+      return false;
+    }
+    return true;
+  }
+
   isColliding(obj) {
     return (
       this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
       this.hitbox.x <= obj.hitbox.x + obj.hitbox.width &&
       this.hitbox.y + this.hitbox.height >= obj.hitbox.y &&
-      this.hitbox.y <= obj.hitbox.y + obj.hitbox.height
+      this.hitbox.y <= obj.hitbox.y + obj.hitbox.height &&
+      this.hitbox.active == true &&
+      obj.hitbox.active == true
     );
   }
 
   setHitbox(offsetYT = 0, offsetYB = 0, offsetXL = 0, offsetXR = 0) {
     this.hitbox = {
+      active: true,
       x: this.x + offsetXL,
       width: this.width - offsetXL - offsetXR,
       y: this.y + offsetYT,
@@ -58,6 +80,7 @@ class MoveableObject extends DrawableObject {
 
   deletHitbox() {
     this.hitbox = {
+      active: false,
       x: 0,
       width: 0,
       y: 0,
@@ -82,13 +105,15 @@ class MoveableObject extends DrawableObject {
   }
 
   applyGravity() {
-    setInterval(() => {
-      if (this.isOverGroung() || this.speedY > 0) {
-        this.y -= this.speedY;
-        this.hitbox.y -= this.speedY;
-        this.speedY -= this.acceleration;
-      }
-    }, 1000 / 25);
+    this.stoppableInterval(
+      setInterval(() => {
+        if (this.isOverGroung() || this.speedY > 0) {
+          this.y -= this.speedY;
+          this.hitbox.y -= this.speedY;
+          this.speedY -= this.acceleration;
+        }
+      }, 1000 / 25)
+    );
   }
 
   isOverGroung() {
