@@ -8,6 +8,12 @@ class DrawableObject {
   currentImage = 0;
   intervalIds = [];
 
+  createdId() {
+    const timestamp = Date.now();
+    const randomNumber = Math.floor(Math.random() * 1e8);
+    this.instanzId = `${timestamp}${randomNumber}`;
+  }
+
   loadImg(path) {
     this.img = new Image();
     this.img.src = path;

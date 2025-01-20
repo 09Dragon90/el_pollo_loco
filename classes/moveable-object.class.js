@@ -14,12 +14,6 @@ class MoveableObject extends DrawableObject {
   acceleration = 2;
   instanzId;
 
-  createdId() {
-    const timestamp = Date.now();
-    const randomNumber = Math.floor(Math.random() * 1e8);
-    this.instanzId = `${timestamp}${randomNumber}`;
-  }
-
   calY(height, overGroundY) {
     return overGroundY - height;
   }
