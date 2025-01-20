@@ -4,11 +4,19 @@ class Level {
   cloud = new Cloud();
   width = 1439;
   lengthOfLevel;
+  collectableItems = [];
 
   constructor(numbersOfEnemies = 1, numbersOfBackground = 1) {
     this.lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
     this.createEnemies(numbersOfEnemies, this.lengthOfLevel);
+    this.createCollectables();
+  }
+
+  createCollectables() {
+    this.collectableItems.push(
+      new CollectableObject("coin", this.lengthOfLevel)
+    );
   }
 
   createEnemies(numbers, lengthOfLevel) {
