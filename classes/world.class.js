@@ -26,6 +26,7 @@ class World {
     setInterval(() => {
       this.collitionCharacter();
       this.collitionBottle();
+      this.collitionCollectable();
     }, 200);
   }
 
@@ -47,6 +48,14 @@ class World {
           this.deletedInstanz(bottle, this.bottles, 700);
         }
       });
+    });
+  }
+
+  collitionCollectable() {
+    this.level.collectableItems.forEach((item) => {
+      if (this.character.isColliding(item)) {
+        this.deletedInstanz(item, this.level.collectableItems, 0);
+      }
     });
   }
 

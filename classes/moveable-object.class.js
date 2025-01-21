@@ -12,7 +12,6 @@ class MoveableObject extends DrawableObject {
   energy = 100;
   lastHit = 0;
   acceleration = 2;
-  instanzId;
 
   calY(height, overGroundY) {
     return overGroundY - height;

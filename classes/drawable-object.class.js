@@ -7,6 +7,7 @@ class DrawableObject {
   imageCache = {};
   currentImage = 0;
   intervalIds = [];
+  instanzId;
 
   createdId() {
     const timestamp = Date.now();

@@ -5,11 +5,10 @@ class CollectableObject extends DrawableObject {
     super();
     this.type = type;
     this.setType(type, lengthOfLevel);
+    this.createdId();
   }
 
   setType(type, lengthOfLevel) {
-    console.log(lengthOfLevel);
-
     switch (type) {
       case "coin":
         this.loadImg("assets/img/8_coin/coin_2.png");
