@@ -6,17 +6,36 @@ class Level {
   lengthOfLevel;
   collectableItems = [];
 
-  constructor(numbersOfEnemies = 1, numbersOfBackground = 1) {
+  constructor(
+    numbersOfEnemies = 1,
+    numbersOfBackground = 1,
+    numbersOfCoins = 1,
+    numbersOfBottles = 1
+  ) {
     this.lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
     this.createEnemies(numbersOfEnemies, this.lengthOfLevel);
-    this.createCollectables();
+    this.createCoins(numbersOfCoins, this.calLengthOfLevelItems());
+    this.createBottles(numbersOfBottles, this.calLengthOfLevelItems());
   }
 
-  createCollectables() {
-    this.collectableItems.push(
-      new CollectableObject("coin", this.lengthOfLevel)
-    );
+  createCoins(numbers, lengthOfLevel) {
+    for (let index = 0; index < numbers; index++) {
+      this.collectableItems.push(new CollectableObject("coin", lengthOfLevel));
+    }
+  }
+
+  createBottles(numbers, lengthOfLevel) {
+    for (let index = 0; index < numbers; index++) {
+      this.collectableItems.push(
+        new CollectableObject("bottle", lengthOfLevel)
+      );
+    }
+  }
+
+  calLengthOfLevelItems() {
+    let indexEndboss = this.enemies.length - 1;
+    return this.enemies[indexEndboss].x;
   }
 
   createEnemies(numbers, lengthOfLevel) {
