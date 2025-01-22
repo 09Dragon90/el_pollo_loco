@@ -19,15 +19,15 @@ class World {
     this.level = levels.level1;
     this.setWorld();
     this.draw();
-    this.checkColloctions();
+    this.run();
   }
 
-  checkColloctions() {
+  run() {
     setInterval(() => {
       this.collitionCharacter();
       this.collitionBottle();
       this.collitionCollectable();
-    }, 200);
+    }, 100);
   }
 
   collitionCharacter() {
@@ -55,6 +55,9 @@ class World {
     this.level.collectableItems.forEach((item) => {
       if (this.character.isColliding(item)) {
         this.deletedInstanz(item, this.level.collectableItems, 0);
+        this.character.collectItem(item.type);
+        this.bars[1].setPercent(this.character.numbersOfCoins);
+        this.bars[2].setPercent(this.character.numbersOfBottles * 10);
       }
     });
   }

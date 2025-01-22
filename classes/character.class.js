@@ -4,7 +4,8 @@ class Character extends MoveableObject {
   ground;
   world;
   bottleIsThrow = false;
-  numbersOfBottles = 100;
+  numbersOfBottles = 0;
+  numbersOfCoins = 0;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -123,5 +124,16 @@ class Character extends MoveableObject {
         this.animatedImages(this.imagesIdle);
       }
     }, 100);
+  }
+
+  collectItem(type) {
+    switch (type) {
+      case "coin":
+        this.numbersOfCoins += 5;
+        break;
+      case "bottle":
+        this.numbersOfBottles++;
+        break;
+    }
   }
 }
