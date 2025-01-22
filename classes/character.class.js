@@ -4,7 +4,7 @@ class Character extends MoveableObject {
   ground;
   world;
   bottleIsThrow = false;
-  numbersOfBottles = 0;
+  numbersOfBottles = 5;
   numbersOfCoins = 0;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",

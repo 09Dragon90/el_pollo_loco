@@ -4,7 +4,7 @@ class World {
   bars = [
     new StatusBar(10, 0, 100, "health", "green"),
     new StatusBar(10, 40, 0, "coin", "blue"),
-    new StatusBar(10, 80, 0, "bottle", "orange"),
+    new StatusBar(10, 80, 25, "bottle", "orange"),
   ];
   bottles = [];
   ctx;
@@ -47,6 +47,7 @@ class World {
           bottle.splash();
           this.deletedInstanz(bottle, this.bottles, 700);
         }
+        this.bars[2].setPercent(this.character.numbersOfBottles * 5);
       });
     });
   }
@@ -57,7 +58,7 @@ class World {
         this.deletedInstanz(item, this.level.collectableItems, 0);
         this.character.collectItem(item.type);
         this.bars[1].setPercent(this.character.numbersOfCoins);
-        this.bars[2].setPercent(this.character.numbersOfBottles * 10);
+        this.bars[2].setPercent(this.character.numbersOfBottles * 5);
       }
     });
   }

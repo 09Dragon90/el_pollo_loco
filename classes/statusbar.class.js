@@ -21,15 +21,15 @@ class StatusBar extends DrawableObject {
   }
 
   getIndexImages() {
-    if (this.percent == 100) {
+    if (this.percent > 80) {
       return 5;
-    } else if (this.percent > 80) {
-      return 4;
     } else if (this.percent > 60) {
-      return 3;
+      return 4;
     } else if (this.percent > 40) {
-      return 2;
+      return 3;
     } else if (this.percent > 20) {
+      return 2;
+    } else if (this.percent > 0) {
       return 1;
     } else {
       return 0;

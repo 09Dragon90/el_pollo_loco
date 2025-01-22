@@ -3,7 +3,3 @@ ToDo:
 - Endboss hit
 - Endboss aufwecken
 - Endboss sterben
-- Flaschen anzeigen
-- Flaschen sammeln
-- Coins anzeigen
-- Coins sammeln
