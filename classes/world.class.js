@@ -1,11 +1,11 @@
 class World {
   level;
   character = new Character();
-  bars = [
-    new StatusBar(10, 0, 100, "health", "green"),
-    new StatusBar(10, 40, 0, "coin", "blue"),
-    new StatusBar(10, 80, 25, "bottle", "orange"),
-  ];
+  bars = {
+    health: new StatusBar(10, 0, 100, "health", "green"),
+    coins: new StatusBar(10, 40, 0, "coin", "blue"),
+    bottles: new StatusBar(10, 80, 25, "bottle", "orange"),
+  };
   bottles = [];
   ctx;
   canvas;
@@ -34,7 +34,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit();
-        this.bars[0].setPercent(this.character.energy);
+        this.bars["health"].setPercent(this.character.energy);
       }
     });
   }
@@ -47,7 +47,7 @@ class World {
           bottle.splash();
           this.deletedInstanz(bottle, this.bottles, 700);
         }
-        this.bars[2].setPercent(this.character.numbersOfBottles * 5);
+        this.bars["bottles"].setPercent(this.character.numbersOfBottles * 5);
       });
     });
   }
@@ -57,8 +57,8 @@ class World {
       if (this.character.isColliding(item)) {
         this.deletedInstanz(item, this.level.collectableItems, 0);
         this.character.collectItem(item.type);
-        this.bars[1].setPercent(this.character.numbersOfCoins);
-        this.bars[2].setPercent(this.character.numbersOfBottles * 5);
+        this.bars["coins"].setPercent(this.character.numbersOfCoins);
+        this.bars["bottles"].setPercent(this.character.numbersOfBottles * 5);
       }
     });
   }
@@ -109,6 +109,7 @@ class World {
   }
 
   addObjectsToMap(objArray) {
+    if (typeof objArray === "object") objArray = Object.values(objArray);
     objArray.forEach((obj) => {
       this.addToMap(obj);
     });
