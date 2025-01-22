@@ -41,7 +41,7 @@ class Endboss extends MoveableObject {
 
   constructor(lengthOfLevel) {
     super();
-    this.loadImg(this.imagesWalking[0]);
+    this.loadImg(this.imagesAlert[1]);
     this.loadImages(this.imagesWalking);
     this.loadImages(this.imagesAlert);
     this.loadImages(this.imagesAttack);
@@ -50,12 +50,14 @@ class Endboss extends MoveableObject {
     this.x = lengthOfLevel - this.width - 50;
     this.y = this.calY(this.height, this.overGroundY) + 10;
     this.setHitbox(60, 10, 30, 10);
-    this.animation();
   }
 
   animation() {
     setInterval(() => {
       this.animatedImages(this.imagesWalking);
     }, 200);
+  }
+  hit() {
+    this.animation();
   }
 }
