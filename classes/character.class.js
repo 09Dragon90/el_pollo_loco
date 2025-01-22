@@ -4,7 +4,7 @@ class Character extends MoveableObject {
   ground;
   world;
   bottleIsThrow = false;
-  numbersOfBottles = 5;
+  numbersOfBottles = 25;
   numbersOfCoins = 0;
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
@@ -100,7 +100,7 @@ class Character extends MoveableObject {
             this.y + this.height / 2
           )
         );
-        this.numbersOfBottles--;
+        this.numbersOfBottles -= 5;
         this.bottleIsThrow = true;
         setTimeout(() => {
           this.bottleIsThrow = false;
@@ -132,7 +132,7 @@ class Character extends MoveableObject {
         this.numbersOfCoins += 5;
         break;
       case "bottle":
-        this.numbersOfBottles++;
+        this.numbersOfBottles += 5;
         break;
     }
   }

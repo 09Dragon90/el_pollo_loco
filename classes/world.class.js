@@ -47,7 +47,7 @@ class World {
           bottle.splash();
           this.deletedInstanz(bottle, this.bottles, 700);
         }
-        this.bars["bottles"].setPercent(this.character.numbersOfBottles * 5);
+        this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       });
     });
   }
@@ -58,7 +58,7 @@ class World {
         this.deletedInstanz(item, this.level.collectableItems, 0);
         this.character.collectItem(item.type);
         this.bars["coins"].setPercent(this.character.numbersOfCoins);
-        this.bars["bottles"].setPercent(this.character.numbersOfBottles * 5);
+        this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       }
     });
   }
