@@ -27,12 +27,15 @@ class World {
       this.collitionCharacter();
       this.collitionBottle();
       this.collitionCollectable();
-    }, 100);
+    }, 75);
   }
 
   collitionCharacter() {
     this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)) {
+      if (this.character.isHittingFromTop(enemy)) {
+        enemy.hit();
+        this.character.bouncer();
+      } else if (this.character.isColliding(enemy)) {
         this.character.hit();
         this.bars["health"].setPercent(this.character.energy);
       }

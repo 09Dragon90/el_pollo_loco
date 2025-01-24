@@ -34,8 +34,8 @@ class Chicken extends MoveableObject {
   }
 
   hit() {
+    this.deletHitbox();
     this.stopIntervals();
     this.loadImg(this.imagesDead);
-    this.deletHitbox();
   }
 }

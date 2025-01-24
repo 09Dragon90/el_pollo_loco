@@ -32,6 +32,10 @@ class MoveableObject extends DrawableObject {
     this.speedY = 20;
   }
 
+  bouncer() {
+    this.speedY = 10;
+  }
+
   animatedImages(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
@@ -61,6 +65,22 @@ class MoveableObject extends DrawableObject {
     );
   }
 
+  isHittingFromTop(obj) {
+    if (this.speedY <= 0 && this.isOverGroung()) {
+      console.log(this.speedY);
+
+      return (
+        this.hitbox.x <= obj.hitbox.x + obj.hitbox.width &&
+        this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
+        this.hitbox.y + this.hitbox.height < obj.hitbox.y + 25 &&
+        this.hitbox.y + this.hitbox.height > obj.hitbox.y - 8 &&
+        this.hitbox.active == true &&
+        obj.hitbox.active == true
+      );
+    }
+    return false;
+  }
+
   hit() {
     if (!this.isDead() && !this.isHurt()) {
       this.energy -= 5;
@@ -83,7 +103,7 @@ class MoveableObject extends DrawableObject {
         if (this.isOverGroung() || this.speedY > 0) {
           this.y -= this.speedY;
           this.hitbox.y -= this.speedY;
-          this.speedY -= this.acceleration;
+          if (this.speedY > -16) this.speedY -= this.acceleration;
         }
       }, 1000 / 25)
     );
