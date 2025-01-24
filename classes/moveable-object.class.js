@@ -33,6 +33,7 @@ class MoveableObject extends DrawableObject {
   }
 
   bouncer() {
+    this.currentImage = 0;
     this.speedY = 10;
   }
 
