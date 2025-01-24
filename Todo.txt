@@ -3,3 +3,13 @@ ToDo:
 - Endboss hit
 - Endboss aufwecken
 - Endboss sterben
+- Sound hinzufügen
+- Start Button
+- Mute Button
+- Fullscreen 
+- Steuerelemte für Mobile
+- Endbildschirm hinzufügen
+    - Gewonne
+    - Game Over
+- Hintergrund Seite hinzufügen
+- Schriftart anpassen
