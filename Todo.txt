@@ -1,5 +1,6 @@
 ToDo:
 
+- Chacater IdleLong hinzufügen
 - Endboss hit
 - Endboss aufwecken
 - Endboss sterben
