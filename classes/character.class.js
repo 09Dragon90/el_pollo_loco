@@ -142,20 +142,6 @@ class Character extends MoveableObject {
     );
   }
 
-  playAnimationsDead() {
-    this.stopIntervals();
-    this.currentImage = 0;
-    this.stoppableInterval(
-      setInterval(() => {
-        if (this.animatedImagesOnce(this.imagesDead)) {
-          this.stopIntervals();
-          let path = this.imagesDead[this.imagesDead.length - 1];
-          this.img = this.imageCache[path];
-        }
-      }, 1000 / 10)
-    );
-  }
-
   collectItem(type) {
     switch (type) {
       case "coin":

@@ -54,15 +54,17 @@ class Endboss extends MoveableObject {
   }
 
   animation() {
-    setInterval(() => {
-      if (this.isDead()) {
-        this.animatedImages(this.imagesDead);
-      } else if (this.isHurt()) {
-        this.animatedImages(this.imagesHurt);
-      } else {
-        this.animatedImages(this.imagesWalking);
-      }
-    }, 200);
+    this.stoppableInterval(
+      setInterval(() => {
+        if (this.isDead()) {
+          this.playAnimationsDead();
+        } else if (this.isHurt()) {
+          this.animatedImages(this.imagesHurt);
+        } else {
+          this.animatedImages(this.imagesWalking);
+        }
+      }, 200)
+    );
   }
 
   hit() {
