@@ -59,7 +59,10 @@ class Endboss extends MoveableObject {
     }, 200);
   }
   hit() {
-    this.animation();
-    this.sleep = false;
+    if (this.sleep) {
+      this.animation();
+      this.sleep = false;
+    }
+    this.energy -= 5;
   }
 }
