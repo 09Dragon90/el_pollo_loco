@@ -154,4 +154,11 @@ class World {
       array.splice(index, 1);
     }, time);
   }
+
+  endGame() {
+    this.character.stopIntervals();
+    this.level.enemies.forEach((enemy) => {
+      enemy.stopIntervals();
+    });
+  }
 }
