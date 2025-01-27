@@ -11,5 +11,3 @@ ToDo:
 - Endbildschirm hinzufügen
     - Gewonne
     - Game Over
-- Hintergrund Seite hinzufügen
-- Schriftart anpassen

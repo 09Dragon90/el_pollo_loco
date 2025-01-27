@@ -20,6 +20,7 @@ h1 {
   font-size: 80px;
   letter-spacing: 5px;
   margin-bottom: 2px;
+  margin-top: 0;
 }
 
 canvas {
