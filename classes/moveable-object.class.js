@@ -68,8 +68,6 @@ class MoveableObject extends DrawableObject {
 
   isHittingFromTop(obj) {
     if (this.speedY <= 0 && this.isOverGroung()) {
-      console.log(this.speedY);
-
       return (
         this.hitbox.x <= obj.hitbox.x + obj.hitbox.width &&
         this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
