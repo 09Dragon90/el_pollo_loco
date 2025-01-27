@@ -4,6 +4,11 @@ ToDo:
 - Endboss aufwecken
 - Endboss sterben
 - Sound hinzufügen
+    - Sprung
+    - hit
+    - Start Game
+    - Game Over
+    - Endboss aufgeweckt
 - Start Button
 - Mute Button
 - Fullscreen 
