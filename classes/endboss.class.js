@@ -55,13 +55,23 @@ class Endboss extends MoveableObject {
 
   animation() {
     setInterval(() => {
-      this.animatedImages(this.imagesWalking);
+      if (this.isDead()) {
+        this.animatedImages(this.imagesDead);
+      } else if (this.isHurt()) {
+        this.animatedImages(this.imagesHurt);
+      } else {
+        this.animatedImages(this.imagesWalking);
+      }
     }, 200);
   }
 
   hit() {
     if (this.sleep) this.wakeUp();
-    this.energy -= 10;
+    if (!this.isDead() && !this.isHurt()) {
+      this.energy -= 10;
+      this.lastHit = new Date().getTime();
+    }
+    if (this.isDead()) this.deletHitbox();
   }
 
   wakeUp() {
