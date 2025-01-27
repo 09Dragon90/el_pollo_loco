@@ -16,3 +16,4 @@ ToDo:
 - Endbildschirm hinzufügen
     - Gewonne
     - Game Over
+- Start Bildschirm
