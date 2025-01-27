@@ -45,8 +45,8 @@ class World {
   collitionBottle() {
     this.bottles.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
-        if (bottle.isColliding(enemy) && !enemy instanceof Endboss) {
-          hitCicken(enemy);
+        if (bottle.isColliding(enemy) && enemy instanceof Chicken) {
+          enemy.hit();
           this.bottleSplash(bottle);
         } else if (bottle.isColliding(enemy) && enemy instanceof Endboss) {
           this.hitEndboss(enemy);
@@ -66,10 +66,6 @@ class World {
         this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       }
     });
-  }
-
-  hitCicken(enemy) {
-    enemy.hit();
   }
 
   hitEndboss(enemy) {
