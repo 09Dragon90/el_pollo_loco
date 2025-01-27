@@ -45,10 +45,12 @@ class World {
   collitionBottle() {
     this.bottles.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
-        if (bottle.isColliding(enemy)) {
-          enemy.hit();
-          bottle.splash();
-          this.deletedInstanz(bottle, this.bottles, 700);
+        if (bottle.isColliding(enemy) && !enemy instanceof Endboss) {
+          hitCicken(enemy);
+          this.bottleSplash(bottle);
+        } else if (bottle.isColliding(enemy) && enemy instanceof Endboss) {
+          this.hitEndboss(enemy);
+          this.bottleSplash(bottle);
         }
         this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       });
@@ -64,6 +66,38 @@ class World {
         this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       }
     });
+  }
+
+  hitCicken(enemy) {
+    enemy.hit();
+  }
+
+  hitEndboss(enemy) {
+    let indexEndboss = this.level.enemies.length - 1;
+    enemy.hit();
+    if (!this.level.enemies[indexEndboss].sleep) {
+      this.addStatusbarEndboss();
+      this.bars["endboss"].setPercent(enemy.energy);
+    }
+  }
+
+  bottleSplash(bottle) {
+    bottle.splash();
+    this.deletedInstanz(bottle, this.bottles, 700);
+  }
+
+  addStatusbarEndboss() {
+    if (!this.hasBarEndboss()) {
+      this.bars = {
+        ...this.bars,
+        endboss: new StatusBar(500, 6, 100, "endboss", "green"),
+      };
+    }
+  }
+
+  hasBarEndboss() {
+    let keys = Object.keys(this.bars);
+    return keys.includes("endboss");
   }
 
   setWorld() {

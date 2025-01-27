@@ -5,6 +5,11 @@ ToDo:
 - Endboss aufwecken
 - Endboss sterben
 - Sound hinzufügen
+    - Sprung
+    - hit
+    - Start Game
+    - Game Over
+    - Endboss aufgeweckt
 - Start Button
 - Mute Button
 - Fullscreen 
@@ -12,5 +17,4 @@ ToDo:
 - Endbildschirm hinzufügen
     - Gewonne
     - Game Over
-- Hintergrund Seite hinzufügen
-- Schriftart anpassen
+- Start Bildschirm
