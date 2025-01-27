@@ -1,9 +1,7 @@
 ToDo:
 
 - Chacater IdleLong hinzufügen
-- Endboss hit
-- Endboss aufwecken
-- Endboss sterben
+- Endboss gehen
 - Sound hinzufügen
     - Sprung
     - hit
