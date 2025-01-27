@@ -80,7 +80,6 @@ class Character extends MoveableObject {
     this.setHitbox(100, 10, 15, 15);
     this.animation();
     this.applyGravity();
-    this.energy = 10;
   }
 
   animation() {
@@ -150,7 +149,6 @@ class Character extends MoveableObject {
       setInterval(() => {
         if (this.animatedImagesOnce(this.imagesDead)) {
           this.stopIntervals();
-          debugger;
           let path = this.imagesDead[this.imagesDead.length - 1];
           this.img = this.imageCache[path];
         }
