@@ -27,6 +27,7 @@ class World {
       this.collitionCharacter();
       this.collitionBottle();
       this.collitionCollectable();
+      this.addStatusbarEndboss();
     }, 75);
   }
 
@@ -64,6 +65,21 @@ class World {
         this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       }
     });
+  }
+
+  addStatusbarEndboss() {
+    let indexEndboss = this.level.enemies.length - 1;
+    if (!this.hasBarEndboss() && !this.level.enemies[indexEndboss].sleep) {
+      this.bars = {
+        ...this.bars,
+        endboss: new StatusBar(500, 6, 100, "endboss", "green"),
+      };
+    }
+  }
+
+  hasBarEndboss() {
+    let keys = Object.keys(this.bars);
+    return keys.includes("endboss");
   }
 
   setWorld() {
