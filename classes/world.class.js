@@ -27,7 +27,14 @@ class World {
       this.collitionCharacter();
       this.collitionBottle();
       this.collitionCollectable();
+      this.winGame();
     }, 75);
+  }
+
+  winGame() {
+    if (this.allEnemiesDead()) {
+      this.stopGame();
+    }
   }
 
   collitionCharacter() {
@@ -155,7 +162,17 @@ class World {
     }, time);
   }
 
-  endGame() {
+  allEnemiesDead() {
+    let allDead = true;
+    this.level.enemies.forEach((enemy) => {
+      if (!enemy.isDead()) {
+        allDead = false;
+      }
+    });
+    return allDead;
+  }
+
+  stopGame() {
     this.character.stopIntervals();
     this.level.enemies.forEach((enemy) => {
       enemy.stopIntervals();
