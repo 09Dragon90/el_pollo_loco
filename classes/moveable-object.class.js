@@ -112,6 +112,15 @@ class MoveableObject extends DrawableObject {
     return this.y < this.ground;
   }
 
+  fallOut() {
+    this.y -= 100;
+    this.stoppableInterval(
+      setInterval(() => {
+        this.y += 20;
+      }, 1000 / 25)
+    );
+  }
+
   playAnimationsDead() {
     this.stopIntervals();
     this.currentImage = 0;
@@ -119,6 +128,7 @@ class MoveableObject extends DrawableObject {
       setInterval(() => {
         if (this.animatedImagesOnce(this.imagesDead)) {
           this.stopIntervals();
+          this.fallOut();
           let path = this.imagesDead[this.imagesDead.length - 1];
           this.img = this.imageCache[path];
         }

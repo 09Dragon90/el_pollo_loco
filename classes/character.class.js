@@ -80,6 +80,7 @@ class Character extends MoveableObject {
     this.setHitbox(100, 10, 15, 15);
     this.animation();
     this.applyGravity();
+    this.energy = 5;
   }
 
   animation() {
