@@ -8,7 +8,4 @@ ToDo:
 - Mute Button
 - Fullscreen 
 - Steuerelemte für Mobile
-- Endbildschirm hinzufügen
-    - Gewonne
-    - Game Over
 - Start Bildschirm
