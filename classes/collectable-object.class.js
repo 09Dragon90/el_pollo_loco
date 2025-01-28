@@ -19,12 +19,11 @@ class CollectableObject extends DrawableObject {
         this.setHitbox(30, 30, 30, 30);
         break;
       case "bottle":
-        this.loadImg("assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png");
         this.width = 80;
         this.height = 80;
         this.x = this.calX(lengthOfLevel);
         this.y = 350;
-        this.setHitbox(10, 5, 30, 10);
+        this.flippBottle();
         break;
     }
   }
@@ -38,5 +37,15 @@ class CollectableObject extends DrawableObject {
   calX(end) {
     const beginn = 250;
     return beginn + Math.random() * (end - beginn - this.width);
+  }
+
+  flippBottle() {
+    if (Math.round(Math.random()) == 0) {
+      this.loadImg("assets/img/6_salsa_bottle/1_salsa_bottle_on_ground.png");
+      this.setHitbox(10, 5, 30, 10);
+    } else {
+      this.loadImg("assets/img/6_salsa_bottle/2_salsa_bottle_on_ground.png");
+      this.setHitbox(10, 5, 20, 20);
+    }
   }
 }
