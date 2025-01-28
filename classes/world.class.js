@@ -11,6 +11,8 @@ class World {
   canvas;
   keybord;
   camera_x = 0;
+  overlay;
+  idRunIntervall;
 
   constructor(canvas, keybord, levels) {
     this.ctx = canvas.getContext("2d");
@@ -23,17 +25,23 @@ class World {
   }
 
   run() {
-    setInterval(() => {
+    this.idRunIntervall = setInterval(() => {
       this.collitionCharacter();
       this.collitionBottle();
       this.collitionCollectable();
-      this.winGame();
+      this.endGame();
     }, 75);
   }
 
-  winGame() {
-    if (this.allEnemiesDead()) {
+  endGame() {
+    if (!this.allEnemiesDead()) {
+      clearInterval(this.idRunIntervall);
       this.stopGame();
+      this.overlay = new Overlay(false);
+    } else if (this.character.isDead()) {
+      clearInterval(this.idRunIntervall);
+      this.stopGame();
+      this.overlay = new Overlay(false);
     }
   }
 
@@ -120,6 +128,7 @@ class World {
     this.addToMap(this.character);
     this.addObjectsToMap(this.bottles);
     this.ctx.translate(-this.camera_x, 0);
+    if (this.overlay instanceof Overlay) this.addToMap(this.overlay);
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
@@ -173,9 +182,11 @@ class World {
   }
 
   stopGame() {
-    this.character.stopIntervals();
-    this.level.enemies.forEach((enemy) => {
-      enemy.stopIntervals();
-    });
+    setTimeout(() => {
+      this.character.stopIntervals();
+      this.level.enemies.forEach((enemy) => {
+        enemy.stopIntervals();
+      });
+    }, 2000);
   }
 }

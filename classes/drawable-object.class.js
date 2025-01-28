@@ -8,6 +8,7 @@ class DrawableObject {
   currentImage = 0;
   intervalIds = [];
   instanzId;
+  isFlipped = false;
 
   createdId() {
     const timestamp = Date.now();
