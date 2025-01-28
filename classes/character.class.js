@@ -6,6 +6,8 @@ class Character extends MoveableObject {
   bottleIsThrow = false;
   numbersOfBottles = 25;
   numbersOfCoins = 0;
+  timeLongIdle = 0;
+
   imagesWalk = [
     "assets/img/2_character_pepe/2_walk/W-21.png",
     "assets/img/2_character_pepe/2_walk/W-22.png",
@@ -80,7 +82,6 @@ class Character extends MoveableObject {
     this.setHitbox(100, 10, 15, 15);
     this.animation();
     this.applyGravity();
-    this.energy = 5;
   }
 
   animation() {
@@ -129,15 +130,22 @@ class Character extends MoveableObject {
     this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
+          this.timeLongIdle = 0;
           this.playAnimationsDead();
         } else if (this.isHurt()) {
+          this.timeLongIdle = 0;
           this.animatedImages(this.imagesHurt);
         } else if (this.isOverGroung()) {
+          this.timeLongIdle = 0;
           this.animatedImages(this.imagesJump);
         } else if (this.world.keybord.Right || this.world.keybord.Left) {
+          this.timeLongIdle = 0;
           this.animatedImages(this.imagesWalk);
+        } else if (this.timeLongIdle > 150) {
+          this.animatedImages(this.imagesIdleLong);
         } else {
           this.animatedImages(this.imagesIdle);
+          this.timeLongIdle++;
         }
       }, 100)
     );

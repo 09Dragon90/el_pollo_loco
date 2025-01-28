@@ -1,6 +1,5 @@
 ToDo:
 
-- Chacater IdleLong hinzufügen
 - Sound hinzufügen
     - Sprung
     - hit
