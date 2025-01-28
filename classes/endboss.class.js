@@ -55,6 +55,16 @@ class Endboss extends MoveableObject {
 
   animation() {
     this.stoppableInterval(
+      this.stoppableInterval(
+        setInterval(() => {
+          if (!this.isHurt()) {
+            this.moveLeft();
+          }
+        }, 1000 / 150)
+      )
+    );
+
+    this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
           this.playAnimationsDead();
