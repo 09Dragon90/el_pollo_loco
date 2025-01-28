@@ -66,6 +66,7 @@ class Character extends MoveableObject {
     "assets/img/2_character_pepe/4_hurt/H-43.png",
   ];
   walking_sound = new Audio("assets/audio/walking.mp3");
+  jumping_sound = new Audio("assets/audio/jump.mp3");
 
   constructor() {
     super();
@@ -104,6 +105,7 @@ class Character extends MoveableObject {
         }
         if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
           this.jump();
+          this.jumping_sound.play();
         }
         if (
           this.world.keybord.Space &&

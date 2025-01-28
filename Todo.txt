@@ -1,7 +1,6 @@
 ToDo:
 
 - Sound hinzufügen
-    - Sprung
     - hit
     - Start Game
     - Endboss aufgeweckt
