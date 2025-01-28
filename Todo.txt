@@ -4,7 +4,6 @@ ToDo:
     - Sprung
     - hit
     - Start Game
-    - Game Over
     - Endboss aufgeweckt
 - Start Button
 - Mute Button

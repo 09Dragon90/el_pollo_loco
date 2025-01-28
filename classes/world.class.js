@@ -34,10 +34,10 @@ class World {
   }
 
   endGame() {
-    if (!this.allEnemiesDead()) {
+    if (this.allEnemiesDead()) {
       clearInterval(this.idRunIntervall);
       this.stopGame();
-      this.overlay = new Overlay(false);
+      this.overlay = new Overlay(true);
     } else if (this.character.isDead()) {
       clearInterval(this.idRunIntervall);
       this.stopGame();
