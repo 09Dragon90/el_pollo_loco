@@ -15,6 +15,8 @@ class ThrowableObject extends MoveableObject {
     "assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
   ];
 
+  splash_sound = new Audio("assets/audio/glassBroken.mp3");
+
   constructor(x, y) {
     super();
     this.createdId();
@@ -46,6 +48,7 @@ class ThrowableObject extends MoveableObject {
     this.stopIntervals();
     this.deletHitbox();
     this.currentImage = 0;
+    this.splash_sound.play();
     this.stoppableInterval(
       setInterval(() => {
         if (this.animatedImagesOnce(this.imagesSplash)) {
