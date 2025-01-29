@@ -24,6 +24,7 @@ body {
   justify-content: center;
   background-image: url(assets/img/background.png);
   background-position: center;
+  overflow: hidden;
 }
 
 h1 {
@@ -40,6 +41,9 @@ canvas {
 
 .game {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menue {
@@ -54,9 +58,9 @@ canvas {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 30px;
-  padding-left: 90px;
-  padding-right: 90px;
+  padding-top: 5%;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
 }
 
 .button-play {
@@ -111,5 +115,29 @@ canvas {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  canvas,
+  .menue {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-height: 570px) {
+  h1 {
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 480px) {
+  canvas {
+    height: 100vh;
+  }
+
+  .menue {
+    width: 100%;
+    height: 100vh;
   }
 }
