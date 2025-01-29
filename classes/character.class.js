@@ -67,6 +67,8 @@ class Character extends MoveableObject {
   ];
   walking_sound = new Audio("assets/audio/walking.mp3");
   jumping_sound = new Audio("assets/audio/jump.mp3");
+  bottle_sound = new Audio("assets/audio/collectBottle.mp3");
+  coin_sound = new Audio("assets/audio/collectCoin.mp3");
 
   constructor() {
     super();
@@ -157,9 +159,11 @@ class Character extends MoveableObject {
     switch (type) {
       case "coin":
         this.numbersOfCoins += 5;
+        this.coin_sound.play();
         break;
       case "bottle":
         this.numbersOfBottles += 5;
+        this.bottle_sound.play();
         break;
     }
   }
