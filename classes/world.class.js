@@ -1,6 +1,6 @@
 class World {
   level;
-  character = new Character();
+  character;
   bars = {
     health: new StatusBar(10, 0, 100, "health", "green"),
     coins: new StatusBar(10, 40, 0, "coin", "blue"),
@@ -14,14 +14,27 @@ class World {
   overlay;
   idRunIntervall;
 
-  constructor(canvas, keybord, levels) {
+  constructor(canvas, keybord) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keybord = keybord;
-    this.level = levels.level1;
+    this.createStartScreen(this.ctx);
+  }
+
+  startGame() {
+    this.level = new Level(4, 1, 10, 10);
+    this.character = new Character();
     this.setWorld();
     this.draw();
     this.run();
+  }
+
+  createStartScreen(ctx) {
+    let img = new Image();
+    img.src = "assets/img/9_intro_outro_screens/start/startscreen_1.png";
+    img.onload = function () {
+      ctx.drawImage(img, 0, 0, 720, 480);
+    };
   }
 
   run() {
