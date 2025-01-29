@@ -21,8 +21,8 @@ class World {
     this.createStartScreen(this.ctx);
   }
 
-  startGame() {
-    this.level = new Level(4, 1, 10, 10);
+  startGame(level) {
+    this.level = level;
     this.character = new Character();
     this.setWorld();
     this.draw();

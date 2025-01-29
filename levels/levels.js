@@ -1,3 +1,16 @@
-// const levels = { level1: new Level(4, 1, 10, 10) };
+function createdLevel(difficulty) {
+  let level;
 
-// function createLevel() {}
+  switch (difficulty) {
+    case "hard":
+      level = new Level(4, 1, 10, 10);
+      break;
+    case "medium":
+      level = new Level(4, 1, 10, 10);
+      break;
+    default:
+      level = new Level(4, 1, 10, 10);
+      break;
+  }
+  world.startGame(level);
+}

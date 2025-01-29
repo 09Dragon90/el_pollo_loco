@@ -54,3 +54,24 @@ window.addEventListener("keyup", (e) => {
       break;
   }
 });
+
+function startGame(difficulty) {
+  let menuePlayRef = document.getElementById("menue-play");
+  console.log(difficulty);
+  animatedBtn(difficulty);
+  setTimeout(() => {
+    menuePlayRef.classList.add("d-none");
+    createdLevel(difficulty);
+  }, 1500);
+}
+
+function animatedBtn(difficulty) {
+  let btnPlayRefs = document.getElementsByClassName("button-play");
+  for (let i = 0; i < btnPlayRefs.length; i++) {
+    if (btnPlayRefs[i].id == `btn-play-${difficulty}`) {
+      btnPlayRefs[i].classList.add("button-play-action");
+    } else {
+      btnPlayRefs[i].classList.add("button-play-fade");
+    }
+  }
+}

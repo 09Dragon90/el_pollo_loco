@@ -8,8 +8,37 @@
   </head>
   <body onload="init()">
     <h1>El Pollo Loco</h1>
-    <canvas id="canvas" width="720" height="480"></canvas>
-
+    <div class="game">
+      <canvas id="canvas" width="720" height="480"></canvas>
+      <div class="menue">
+        <div id="menue-play">
+          <button
+            id="btn-play-easy"
+            class="button-play"
+            role="button"
+            onclick="startGame('easy')"
+          >
+            Easy
+          </button>
+          <button
+            id="btn-play-medium"
+            class="button-play"
+            role="button"
+            onclick="startGame('medium')"
+          >
+            Medium
+          </button>
+          <button
+            id="btn-play-hard"
+            class="button-play"
+            role="button"
+            onclick="startGame('hard')"
+          >
+            Hard
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="./classes/drawable-object.class.js"></script>
     <script src="./classes/moveable-object.class.js"></script>
     <script src="./classes/throwable-object.class.js"></script>

@@ -3,6 +3,17 @@
   src: url(assets/fonts/Zabars.ttf);
 }
 
+* {
+  --btn-main: #ff9600;
+  --btn-secendary: #994409;
+  --btn-hover: #ffd70a;
+  box-sizing: border-box;
+}
+
+.d-none {
+  display: none !important;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,4 +36,80 @@ h1 {
 
 canvas {
   background-color: black;
+}
+
+.game {
+  position: relative;
+}
+
+.menue {
+  position: absolute;
+  width: 720px;
+  height: 480px;
+  top: 0;
+  left: 0;
+}
+
+#menue-play {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+.button-play {
+  background-color: var(--btn-main);
+  border: 2px solid var(--btn-secendary);
+  border-radius: 30px;
+  box-shadow: var(--btn-secendary) 4px 4px 0 0;
+  color: var(--btn-secendary);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 36px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "zebars", Helvetica, sans-serif;
+  letter-spacing: 5px;
+}
+
+.button-play-action {
+  animation: rotateFade 2s ease-in-out forwards;
+}
+
+.button-play-fade {
+  animation: Fade 2s ease-in-out forwards;
+}
+
+.button-play:hover {
+  background-color: var(--btn-hover);
+}
+
+.button-play:active {
+  box-shadow: var(--btn-secendary) 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@keyframes rotateFade {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
