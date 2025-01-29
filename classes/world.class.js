@@ -119,7 +119,7 @@ class World {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.addToMap(this.level.cloud);
+    this.addObjectsToMap(this.level.clouds);
     this.ctx.translate(-this.camera_x, 0);
     this.addObjectsToMap(this.bars);
     this.ctx.translate(this.camera_x, 0);
@@ -184,9 +184,14 @@ class World {
   stopGame() {
     setTimeout(() => {
       this.character.stopIntervals();
-      this.level.enemies.forEach((enemy) => {
-        enemy.stopIntervals();
-      });
+      this.stopIntervals(this.level.enemies);
+      this.stopIntervals(this.level.clouds);
     }, 2000);
+  }
+
+  stopIntervals(array) {
+    array.forEach((e) => {
+      e.stopIntervals();
+    });
   }
 }

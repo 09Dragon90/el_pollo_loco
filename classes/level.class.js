@@ -1,7 +1,7 @@
 class Level {
   enemies = [];
   backgroundObjects = [];
-  cloud = new Cloud();
+  clouds = [];
   width = 1439;
   lengthOfLevel;
   collectableItems = [];
@@ -14,6 +14,7 @@ class Level {
   ) {
     this.lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
+    this.createClouds(numbersOfBackground);
     this.createEnemies(numbersOfEnemies, this.lengthOfLevel);
     this.createCoins(numbersOfCoins, this.calLengthOfLevelItems());
     this.createBottles(numbersOfBottles, this.calLengthOfLevelItems());
@@ -30,6 +31,12 @@ class Level {
       this.collectableItems.push(
         new CollectableObject("bottle", lengthOfLevel)
       );
+    }
+  }
+
+  createClouds(numbers) {
+    for (let index = 0; index < numbers + 5; index++) {
+      this.clouds.push(new Cloud(index * (this.width / 2)));
     }
   }
 
