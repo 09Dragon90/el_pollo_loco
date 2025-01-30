@@ -5,6 +5,7 @@ let keyboard = new Keyboard();
 function init() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard);
+  addTouchEvent();
 }
 
 window.addEventListener("keydown", (e) => {
@@ -54,6 +55,19 @@ window.addEventListener("keyup", (e) => {
       break;
   }
 });
+
+function addTouchEvent() {
+  const el = document.getElementsByClassName("butten-control");
+  for (let i = 0; i < el.length; i++) {
+    el[i].addEventListener("touchstart", (e) => {
+      console.log(e.currentTarget.id);
+    });
+
+    el[i].addEventListener("touchend", (e) => {
+      console.log(e.currentTarget.id);
+    });
+  }
+}
 
 function startGame(difficulty) {
   let menuePlayRef = document.getElementById("menue-play");
