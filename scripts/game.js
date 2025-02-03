@@ -89,3 +89,12 @@ function animatedBtn(difficulty) {
     }
   }
 }
+
+function fullscreen() {
+  let el = document.getElementById("canvas");
+  if (el.webkitRequestFullScreen) {
+    el.webkitRequestFullScreen();
+  } else {
+    el.mozRequestFullScreen();
+  }
+}
