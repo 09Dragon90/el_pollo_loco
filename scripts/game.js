@@ -57,7 +57,7 @@ window.addEventListener("keyup", (e) => {
 });
 
 function addTouchEvent() {
-  const el = document.getElementsByClassName("butten-control");
+  const el = document.getElementsByClassName("button-control");
   for (let i = 0; i < el.length; i++) {
     el[i].addEventListener("touchstart", (e) => {
       console.log(e.currentTarget.id);

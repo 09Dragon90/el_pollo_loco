@@ -140,7 +140,7 @@ canvas {
   gap: 8px;
 }
 
-.butten-control {
+.button-control {
   height: 100%;
   background-color: var(--btn-main);
   aspect-ratio: 1/1;
@@ -152,7 +152,11 @@ canvas {
   cursor: pointer;
 }
 
-.butten-control img {
+.button-control:hover {
+  background-color: var(--btn-hover);
+}
+
+.button-control img {
   height: 70%;
   aspect-ratio: 1/1;
 }
