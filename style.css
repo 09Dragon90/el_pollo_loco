@@ -152,9 +152,9 @@ canvas {
   cursor: pointer;
 }
 
-.button-control:hover {
+/* .button-control:hover {
   background-color: var(--btn-hover);
-}
+} */
 
 .button-control img {
   height: 70%;

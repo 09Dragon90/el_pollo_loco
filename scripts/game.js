@@ -9,63 +9,51 @@ function init() {
 }
 
 window.addEventListener("keydown", (e) => {
-  switch (e.keyCode) {
-    case 39:
-    case 68:
-      keyboard.Right = true;
-      break;
-    case 37:
-    case 65:
-      keyboard.Left = true;
-      break;
-    case 38:
-    case 87:
-      keyboard.Up = true;
-      break;
-    case 40:
-    case 83:
-      keyboard.Down = true;
-      break;
-    case 32:
-      keyboard.Space = true;
-      break;
-  }
+  setButton(e.keyCode, true);
 });
 
 window.addEventListener("keyup", (e) => {
-  switch (e.keyCode) {
-    case 39:
-    case 68:
-      keyboard.Right = false;
-      break;
-    case 37:
-    case 65:
-      keyboard.Left = false;
-      break;
-    case 38:
-    case 87:
-      keyboard.Up = false;
-      break;
-    case 40:
-    case 83:
-      keyboard.Down = false;
-      break;
-    case 32:
-      keyboard.Space = false;
-      break;
-  }
+  setButton(e.keyCode, false);
 });
 
 function addTouchEvent() {
   const el = document.getElementsByClassName("button-control");
   for (let i = 0; i < el.length; i++) {
     el[i].addEventListener("touchstart", (e) => {
-      console.log(e.currentTarget.id);
+      setButton(e.currentTarget.id, true);
     });
 
     el[i].addEventListener("touchend", (e) => {
-      console.log(e.currentTarget.id);
+      setButton(e.currentTarget.id, false);
     });
+  }
+}
+
+function setButton(keyCode, status) {
+  switch (keyCode) {
+    case "buttonRight":
+    case 39:
+    case 68:
+      keyboard.Right = status;
+      break;
+    case "buttonLeft":
+    case 37:
+    case 65:
+      keyboard.Left = status;
+      break;
+    case "buttonUp":
+    case 38:
+    case 87:
+      keyboard.Up = status;
+      break;
+    case 40:
+    case 83:
+      keyboard.Down = status;
+      break;
+    case "buttonBottle":
+    case 32:
+      keyboard.Space = status;
+      break;
   }
 }
 

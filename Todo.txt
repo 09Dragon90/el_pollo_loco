@@ -5,6 +5,4 @@ ToDo:
     - Start Game
     - Endboss aufgeweckt
 - Mute Button
-- Fullscreen 
-- Steuerelemte für Mobile
 - Responisv machen
