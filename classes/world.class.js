@@ -43,7 +43,7 @@ class World {
       this.collitionBottle();
       this.collitionCollectable();
       this.endGame();
-    }, 75);
+    }, 50);
   }
 
   endGame() {
