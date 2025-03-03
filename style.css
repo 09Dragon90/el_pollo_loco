@@ -200,6 +200,12 @@ canvas {
   }
 }
 
+@media only screen and (max-width: 400px) {
+  h1 {
+    display: none;
+  }
+}
+
 @media only screen and (max-height: 570px) {
   h1 {
     display: none;
