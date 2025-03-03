@@ -92,4 +92,10 @@ document.getElementById("buttonSound").addEventListener("click", () => {
   if (world.gameRun) {
     world.muteAllSounds(muteSound);
   }
+  let img = document.querySelector("#buttonSound img");
+  if (muteSound) {
+    img.src = "./assets/icons/volume-mute-solid.svg";
+  } else {
+    img.src = "./assets/icons/volume-up-solid.svg";
+  }
 });
