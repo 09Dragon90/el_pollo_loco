@@ -61,13 +61,16 @@ canvas {
   justify-content: space-between;
 }
 
-#menue-play {
+#menue-top {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   padding-top: 5%;
   padding-left: 12.5%;
   padding-right: 12.5%;
+}
+
+#menue-play {
+  display: flex;
+  justify-content: space-between;
 }
 
 .button-play {
