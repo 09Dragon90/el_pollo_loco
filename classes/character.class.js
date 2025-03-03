@@ -65,10 +65,10 @@ class Character extends MoveableObject {
     "assets/img/2_character_pepe/4_hurt/H-42.png",
     "assets/img/2_character_pepe/4_hurt/H-43.png",
   ];
-  walking_sound = new Audio("assets/audio/walking.mp3");
-  jumping_sound = new Audio("assets/audio/jump.mp3");
-  bottle_sound = new Audio("assets/audio/collectBottle.mp3");
-  coin_sound = new Audio("assets/audio/collectCoin.mp3");
+  // walking_sound = new Audio("assets/audio/walking.mp3");
+  // jumping_sound = new Audio("assets/audio/jump.mp3");
+  // bottle_sound = new Audio("assets/audio/collectBottle.mp3");
+  // coin_sound = new Audio("assets/audio/collectCoin.mp3");
 
   constructor() {
     super();
@@ -79,6 +79,7 @@ class Character extends MoveableObject {
     this.loadImages(this.imagesJump);
     this.loadImages(this.imagesDead);
     this.loadImages(this.imagesHurt);
+    this.loadSounds();
     this.y = this.calY(this.height, this.overGroundY);
     this.ground = this.y;
     this.speedX = 5;
@@ -87,27 +88,34 @@ class Character extends MoveableObject {
     this.applyGravity();
   }
 
+  loadSounds() {
+    this.createdSound("assets/audio/walking.mp3", "walking_sound");
+    this.createdSound("assets/audio/jump.mp3", "jumping_sound");
+    this.createdSound("assets/audio/collectBottle.mp3", "bottle_sound");
+    this.createdSound("assets/audio/collectCoin.mp3", "coin_sound");
+  }
+
   animation() {
     this.stoppableInterval(
       setInterval(() => {
-        this.walking_sound.pause();
+        this.sounds.walking_sound.pause();
         if (
           this.world.keybord.Right &&
           this.x < this.world.level.lengthOfLevel - this.width &&
           !this.isDead()
         ) {
-          this.walking_sound.play();
+          this.sounds.walking_sound.play();
           this.isFlipped = false;
           this.moveRight();
         }
         if (this.world.keybord.Left && this.x > -600 && !this.isDead()) {
-          this.walking_sound.play();
+          this.sounds.walking_sound.play();
           this.isFlipped = true;
           this.moveLeft();
         }
         if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
           this.jump();
-          this.jumping_sound.play();
+          this.sounds.jumping_sound.play();
         }
         if (
           this.world.keybord.Space &&
@@ -159,11 +167,11 @@ class Character extends MoveableObject {
     switch (type) {
       case "coin":
         this.numbersOfCoins += 5;
-        this.coin_sound.play();
+        this.sounds.coin_sound.play();
         break;
       case "bottle":
         this.numbersOfBottles += 5;
-        this.bottle_sound.play();
+        this.sounds.bottle_sound.play();
         break;
     }
   }

@@ -9,6 +9,7 @@ class DrawableObject {
   intervalIds = [];
   instanzId;
   isFlipped = false;
+  sounds = {};
 
   createdId() {
     const timestamp = Date.now();
@@ -26,6 +27,18 @@ class DrawableObject {
       let img = new Image();
       img.src = path;
       this.imageCache[path] = img;
+    });
+  }
+
+  createdSound(path, name) {
+    this.sounds[name] = new Audio(path);
+  }
+
+  muteSounds(status) {
+    Object.values(this.sounds).forEach((sound) => {
+      if (sound instanceof Audio) {
+        sound.muted = status;
+      }
     });
   }
 

@@ -1,10 +1,11 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let muteSound = false;
 
 function init() {
   canvas = document.getElementById("canvas");
-  world = new World(canvas, keyboard);
+  world = new World(canvas, keyboard, muteSound);
   addTouchEvent();
 }
 
@@ -85,3 +86,10 @@ function fullscreen() {
     el.mozRequestFullScreen();
   }
 }
+
+document.getElementById("buttonSound").addEventListener("click", () => {
+  muteSound = !muteSound;
+  if (world.gameRun) {
+    world.muteAllSounds(muteSound);
+  }
+});

@@ -13,18 +13,23 @@ class World {
   camera_x = 0;
   overlay;
   idRunIntervall;
+  muteSound;
+  gameRun;
 
-  constructor(canvas, keybord) {
+  constructor(canvas, keybord, muteSound) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keybord = keybord;
+    this.muteSound = muteSound;
     this.createStartScreen(this.ctx);
   }
 
   startGame(level) {
+    this.gameRun = true;
     this.level = level;
     this.character = new Character();
     this.setWorld();
+    this.muteAllSounds(this.muteSound);
     this.draw();
     this.run();
   }
@@ -206,5 +211,9 @@ class World {
     array.forEach((e) => {
       e.stopIntervals();
     });
+  }
+
+  muteAllSounds(muteSound) {
+    this.character.muteSounds(muteSound);
   }
 }
