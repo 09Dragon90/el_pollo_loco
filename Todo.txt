@@ -4,5 +4,8 @@ ToDo:
     - hit
     - Start Game
     - Endboss aufgeweckt
+    - Schnarchen 
 - Mute Button
 - Replay Button
+- Favicon
+- smaller Chicken

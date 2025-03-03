@@ -59,7 +59,6 @@ function setButton(keyCode, status) {
 
 function startGame(difficulty) {
   let menuePlayRef = document.getElementById("menue-play");
-  console.log(difficulty);
   animatedBtn(difficulty);
   setTimeout(() => {
     menuePlayRef.classList.add("d-none");
