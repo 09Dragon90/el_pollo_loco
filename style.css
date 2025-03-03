@@ -41,6 +41,7 @@ h1 {
 
 canvas {
   background-color: black;
+  aspect-ratio: 3/2;
 }
 
 .game {
@@ -83,7 +84,7 @@ canvas {
   cursor: pointer;
   display: inline-block;
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: 36px;
   padding: 0 18px;
   line-height: 50px;
   text-align: center;
@@ -160,7 +161,7 @@ canvas {
   background-color: var(--btn-main);
   aspect-ratio: 1/1;
   border-radius: 50%;
-  border: 0.2rem var(--btn-secendary) solid;
+  border: 2px var(--btn-secendary) solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,5 +221,17 @@ canvas {
   .menue {
     width: 100%;
     height: 100vh;
+  }
+}
+
+@media only screen and( (max-width: 720px) or (max-height: 480px) ) {
+  .button-play {
+    font-size: 20px;
+  }
+}
+
+@media only screen and( (max-width: 500px) or (max-height: 300px) ) {
+  .button-play {
+    font-size: 16px;
   }
 }
