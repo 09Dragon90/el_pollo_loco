@@ -235,3 +235,38 @@ canvas {
     font-size: 16px;
   }
 }
+
+/* .game {
+  display: none;
+} */
+@media only screen and (orientation: portrait) {
+  .game,
+  h1 {
+    display: none;
+  }
+  #warning-message {
+    display: block;
+  }
+}
+@media only screen and (orientation: landscape) {
+  #warning-message {
+    display: none;
+  }
+}
+
+#warning-message {
+  background-color: var(--btn-main);
+  border: 2px solid var(--btn-secendary);
+  border-radius: 30px;
+  box-shadow: var(--btn-secendary) 4px 4px 0 0;
+  color: var(--btn-secendary);
+  font-weight: 400;
+  font-size: 48px;
+  padding: 0 18px;
+  margin: 0 24px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "zebars", Helvetica, sans-serif;
+  letter-spacing: 5px;
+}
