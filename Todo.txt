@@ -5,4 +5,4 @@ ToDo:
     - Start Game
     - Endboss aufgeweckt
 - Mute Button
-- Responisv machen
+- Replay Button
