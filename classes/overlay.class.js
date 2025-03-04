@@ -11,17 +11,21 @@ class Overlay extends DrawableObject {
   ];
   imagesWin = "assets/img/9_intro_outro_screens/win/win_2.png";
 
-  lose_sound = new Audio("assets/audio/gameLose.mp3");
-
-  constructor(GameWin) {
+  constructor(GameWin, muteSound) {
     super();
+    this.loadSounds();
+    this.muteSounds(muteSound);
     if (GameWin) {
       this.loadWinScreen();
       this.animation();
     } else {
       this.loadLoseScreen();
-      this.lose_sound.play();
+      this.sounds.lose_sound.play();
     }
+  }
+
+  loadSounds() {
+    this.createdSound("assets/audio/gameLose.mp3", "lose_sound");
   }
 
   loadLoseScreen() {

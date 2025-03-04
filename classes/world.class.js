@@ -55,11 +55,11 @@ class World {
     if (this.allEnemiesDead()) {
       clearInterval(this.idRunIntervall);
       this.stopGame();
-      this.overlay = new Overlay(true);
+      this.overlay = new Overlay(true, this.muteSound);
     } else if (this.character.isDead()) {
       clearInterval(this.idRunIntervall);
       this.stopGame();
-      this.overlay = new Overlay(false);
+      this.overlay = new Overlay(false, this.muteSound);
     }
   }
 
@@ -217,6 +217,7 @@ class World {
     this.muteSound = muteSound;
     if (world.gameRun) {
       this.character.muteSounds(muteSound);
+      if (this instanceof Overlay) this.overlay.muteSounds(muteSound);
     }
   }
 }
