@@ -32,9 +32,14 @@ class World {
     this.character = new Character();
     this.setWorld();
     this.muteAllSounds(this.muteSound);
-    this.sound_Game.play();
+    this.startGameMusic();
     this.draw();
     this.run();
+  }
+
+  startGameMusic() {
+    this.sound_Game.loop = true;
+    this.sound_Game.play();
   }
 
   createStartScreen(ctx) {
@@ -203,6 +208,7 @@ class World {
   }
 
   stopGame() {
+    this.sound_Game.pause();
     setTimeout(() => {
       this.character.stopIntervals();
       this.stopIntervals(this.level.enemies);
