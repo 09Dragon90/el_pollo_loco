@@ -93,6 +93,7 @@ class Character extends MoveableObject {
     this.createdSound("assets/audio/jump.mp3", "jumping_sound");
     this.createdSound("assets/audio/collectBottle.mp3", "bottle_sound");
     this.createdSound("assets/audio/collectCoin.mp3", "coin_sound");
+    this.createdSound("assets/audio/snoring.mp3", "snoring_sound");
   }
 
   animation() {
@@ -142,25 +143,31 @@ class Character extends MoveableObject {
     this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
-          this.timeLongIdle = 0;
+          this.stopSnoring();
           this.playAnimationsDead();
         } else if (this.isHurt()) {
-          this.timeLongIdle = 0;
+          this.stopSnoring();
           this.animatedImages(this.imagesHurt);
         } else if (this.isOverGroung()) {
-          this.timeLongIdle = 0;
+          this.stopSnoring();
           this.animatedImages(this.imagesJump);
         } else if (this.world.keybord.Right || this.world.keybord.Left) {
-          this.timeLongIdle = 0;
+          this.stopSnoring();
           this.animatedImages(this.imagesWalk);
         } else if (this.timeLongIdle > 150) {
           this.animatedImages(this.imagesIdleLong);
+          this.sounds.snoring_sound.play();
         } else {
           this.animatedImages(this.imagesIdle);
           this.timeLongIdle++;
         }
       }, 100)
     );
+  }
+
+  stopSnoring() {
+    this.timeLongIdle = 0;
+    this.sounds.snoring_sound.pause();
   }
 
   collectItem(type) {
