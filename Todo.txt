@@ -1,3 +1,6 @@
 ToDo:
 
 - Replay Button
+
+
+Tastenbelegung per Dialog mit Link zum Impressum
