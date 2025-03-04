@@ -80,6 +80,7 @@ class Endboss extends MoveableObject {
 
   loadSounds() {
     this.createdSound("assets/audio/hitChicken.mp3", "hit_sound");
+    this.createdSound("assets/audio/roosterCrows.mp3", "wake_sound");
   }
 
   hit() {
@@ -95,6 +96,8 @@ class Endboss extends MoveableObject {
 
   wakeUp() {
     this.animation();
+    this.sounds.wake_sound.play();
     this.sleep = false;
+    this.lastHit = new Date().getTime();
   }
 }
