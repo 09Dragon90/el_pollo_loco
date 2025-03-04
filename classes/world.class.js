@@ -214,6 +214,9 @@ class World {
   }
 
   muteAllSounds(muteSound) {
-    this.character.muteSounds(muteSound);
+    this.muteSound = muteSound;
+    if (world.gameRun) {
+      this.character.muteSounds(muteSound);
+    }
   }
 }

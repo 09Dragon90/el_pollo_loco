@@ -89,9 +89,7 @@ function fullscreen() {
 
 document.getElementById("buttonSound").addEventListener("click", () => {
   muteSound = !muteSound;
-  if (world.gameRun) {
-    world.muteAllSounds(muteSound);
-  }
+  world.muteAllSounds(muteSound);
   let img = document.querySelector("#buttonSound img");
   if (muteSound) {
     img.src = "./assets/icons/volume-mute-solid.svg";
