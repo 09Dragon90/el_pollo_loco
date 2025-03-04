@@ -42,26 +42,26 @@ class DrawableObject {
     });
   }
 
-  drawBorder(ctx) {
-    if (
-      this instanceof Character ||
-      this instanceof Chicken ||
-      this instanceof Endboss ||
-      this instanceof ThrowableObject ||
-      this instanceof CollectableObject
-    ) {
-      ctx.beginPath();
-      ctx.lineWidth = "4";
-      ctx.strokeStyle = "red";
-      ctx.rect(
-        this.hitbox.x,
-        this.hitbox.y,
-        this.hitbox.width,
-        this.hitbox.height
-      );
-      ctx.stroke();
-    }
-  }
+  // drawBorder(ctx) {
+  //   if (
+  //     this instanceof Character ||
+  //     this instanceof Chicken ||
+  //     this instanceof Endboss ||
+  //     this instanceof ThrowableObject ||
+  //     this instanceof CollectableObject
+  //   ) {
+  //     ctx.beginPath();
+  //     ctx.lineWidth = "4";
+  //     ctx.strokeStyle = "red";
+  //     ctx.rect(
+  //       this.hitbox.x,
+  //       this.hitbox.y,
+  //       this.hitbox.width,
+  //       this.hitbox.height
+  //     );
+  //     ctx.stroke();
+  //   }
+  // }
 
   stoppableInterval(interval) {
     let id = interval;

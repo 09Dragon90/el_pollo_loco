@@ -180,7 +180,7 @@ class World {
         console.warn(error);
       }
     }
-    obj.drawBorder(this.ctx);
+    // obj.drawBorder(this.ctx);
   }
 
   addObjectsToMap(objArray) {
