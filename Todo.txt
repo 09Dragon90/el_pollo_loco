@@ -5,4 +5,3 @@ ToDo:
     - Start Game
     - Endboss aufgeweckt
 - Replay Button
-- smaller Chicken
