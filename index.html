@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>El Pollo Loco</title>
   </head>
-  <body onload="init()">
+  <body class="bodyMain" onload="init()">
     <h1>El Pollo Loco</h1>
     <div id="warning-message">
       This website is only viewable in landscape mode
@@ -72,6 +72,13 @@
               onclick="fullscreen()"
             >
               <img src="./assets/icons/expand-solid.svg" />
+            </div>
+            <div
+              class="button-control"
+              id="buttonMenue"
+              onclick="window.open('./help.html', '_self')"
+            >
+              <img src="./assets/icons/question-solid.svg" />
             </div>
           </div>
         </div>
