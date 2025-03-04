@@ -8,6 +8,7 @@ class Level {
 
   constructor(
     numbersOfEnemies = 1,
+    numbersOfEnemiesSmall = 1,
     numbersOfBackground = 1,
     numbersOfCoins = 1,
     numbersOfBottles = 1
@@ -15,7 +16,9 @@ class Level {
     this.lengthOfLevel = numbersOfBackground * this.width;
     this.createBackground(numbersOfBackground);
     this.createClouds(numbersOfBackground);
-    this.createEnemies(numbersOfEnemies, this.lengthOfLevel);
+    this.createEnemies(numbersOfEnemies, this.lengthOfLevel, false);
+    this.createEnemies(numbersOfEnemiesSmall, this.lengthOfLevel, true);
+    this.createEndboss(this.lengthOfLevel);
     this.createCoins(numbersOfCoins, this.calLengthOfLevelItems());
     this.createBottles(numbersOfBottles, this.calLengthOfLevelItems());
   }
@@ -45,10 +48,13 @@ class Level {
     return this.enemies[indexEndboss].x;
   }
 
-  createEnemies(numbers, lengthOfLevel) {
+  createEnemies(numbers, lengthOfLevel, small) {
     for (let index = 0; index < numbers; index++) {
-      this.enemies.push(new Chicken(lengthOfLevel));
+      this.enemies.push(new Chicken(lengthOfLevel, small));
     }
+  }
+
+  createEndboss(lengthOfLevel) {
     this.enemies.push(new Endboss(lengthOfLevel));
   }
 
