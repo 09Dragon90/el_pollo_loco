@@ -17,6 +17,7 @@ class Overlay extends DrawableObject {
     this.muteSounds(muteSound);
     if (GameWin) {
       this.loadWinScreen();
+      this.sounds.win_sound.play();
       this.animation();
     } else {
       this.loadLoseScreen();
@@ -26,6 +27,7 @@ class Overlay extends DrawableObject {
 
   loadSounds() {
     this.createdSound("assets/audio/gameLose.mp3", "lose_sound");
+    this.createdSound("assets/audio/gameWin.mp3", "win_sound");
   }
 
   loadLoseScreen() {
