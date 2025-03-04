@@ -2,4 +2,5 @@ ToDo:
 
 - Sound hinzufügen
     - Endboss aufgeweckt
+    - Winning
 - Replay Button
