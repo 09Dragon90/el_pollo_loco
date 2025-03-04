@@ -16,6 +16,8 @@ class World {
   muteSound;
   gameRun;
 
+  sound_Game = new Audio("assets/audio/gamemusic.mp3");
+
   constructor(canvas, keybord, muteSound) {
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
@@ -30,6 +32,7 @@ class World {
     this.character = new Character();
     this.setWorld();
     this.muteAllSounds(this.muteSound);
+    this.sound_Game.play();
     this.draw();
     this.run();
   }
@@ -215,6 +218,7 @@ class World {
 
   muteAllSounds(muteSound) {
     this.muteSound = muteSound;
+    this.sound_Game.muted = muteSound;
     if (world.gameRun) {
       this.character.muteSounds(muteSound);
       if (this instanceof Overlay) this.overlay.muteSounds(muteSound);
