@@ -6,5 +6,4 @@ ToDo:
     - Endboss aufgeweckt
 - Mute Button
 - Replay Button
-- Favicon
 - smaller Chicken
