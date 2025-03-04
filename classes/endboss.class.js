@@ -87,6 +87,7 @@ class Endboss extends MoveableObject {
     if (!this.isDead() && !this.isHurt()) {
       this.sounds.hit_sound.play();
       this.energy -= 10;
+      this.speedX += 0.05;
       this.lastHit = new Date().getTime();
     }
     if (this.isDead()) this.deletHitbox();

@@ -3,4 +3,3 @@ ToDo:
 - Sound hinzufügen
     - Endboss aufgeweckt
 - Replay Button
-- Endboss schneller werden bei jedem hit
