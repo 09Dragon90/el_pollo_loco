@@ -48,6 +48,7 @@ class Endboss extends MoveableObject {
     this.loadImages(this.imagesAttack);
     this.loadImages(this.imagesHurt);
     this.loadImages(this.imagesDead);
+    this.loadSounds();
     this.x = lengthOfLevel - this.width - 50;
     this.y = this.calY(this.height, this.overGroundY) + 10;
     this.setHitbox(60, 10, 30, 10);
@@ -77,9 +78,14 @@ class Endboss extends MoveableObject {
     );
   }
 
+  loadSounds() {
+    this.createdSound("assets/audio/hitChicken.mp3", "hit_sound");
+  }
+
   hit() {
     if (this.sleep) this.wakeUp();
     if (!this.isDead() && !this.isHurt()) {
+      this.sounds.hit_sound.play();
       this.energy -= 10;
       this.lastHit = new Date().getTime();
     }

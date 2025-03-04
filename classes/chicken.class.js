@@ -18,8 +18,6 @@ class Chicken extends MoveableObject {
   imagesDeadSmall =
     "assets/img/3_enemies_chicken/chicken_small/2_dead/dead.png";
 
-  hit_sound = new Audio("assets/audio/chicken.mp3");
-
   constructor(lengthOfLevel, small) {
     super();
     this.small = small;
@@ -30,6 +28,7 @@ class Chicken extends MoveableObject {
     }
     this.speed = 0.15 + Math.random() * 0.5;
     this.setHitbox(0, 0, 0, 0);
+    this.loadSounds();
     this.animation();
   }
 
@@ -47,6 +46,10 @@ class Chicken extends MoveableObject {
     this.loadImages(this.imagesWalkingSmall);
     this.x = 250 + (lengthOfLevel - 200) * Math.random() - this.width;
     this.y = this.calY(this.height, this.overGroundY);
+  }
+
+  loadSounds() {
+    this.createdSound("assets/audio/hitChicken.mp3", "hit_sound");
   }
 
   animation() {
@@ -68,6 +71,7 @@ class Chicken extends MoveableObject {
 
   hit() {
     this.energy = 0;
+    this.sounds.hit_sound.play();
     this.deletHitbox();
     this.stopIntervals();
     if (this.small) {
