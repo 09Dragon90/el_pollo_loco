@@ -1,7 +1,3 @@
 ToDo:
 
 - Replay Button
-
-- Help Seite
-    - Steuerung anzeigen
-    - Impressum
