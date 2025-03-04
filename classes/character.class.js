@@ -94,6 +94,7 @@ class Character extends MoveableObject {
     this.createdSound("assets/audio/collectBottle.mp3", "bottle_sound");
     this.createdSound("assets/audio/collectCoin.mp3", "coin_sound");
     this.createdSound("assets/audio/snoring.mp3", "snoring_sound");
+    this.createdSound("assets/audio/pain.mp3", "pain_sound");
   }
 
   animation() {
@@ -148,6 +149,7 @@ class Character extends MoveableObject {
         } else if (this.isHurt()) {
           this.stopSnoring();
           this.animatedImages(this.imagesHurt);
+          this.sounds.pain_sound.play();
         } else if (this.isOverGroung()) {
           this.stopSnoring();
           this.animatedImages(this.imagesJump);
