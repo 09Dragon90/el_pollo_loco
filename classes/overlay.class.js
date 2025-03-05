@@ -48,7 +48,7 @@ class Overlay extends DrawableObject {
   }
 
   animation() {
-    setInterval(() => {
+    const id = setInterval(() => {
       let scaleFactor = 1.1;
       if (this.growing) {
         this.width *= scaleFactor;
@@ -65,5 +65,10 @@ class Overlay extends DrawableObject {
       this.x = (this.canvasWidth - this.width) / 2;
       this.y = (this.canvasHeight - this.height) / 2;
     }, 100);
+
+    setTimeout(() => {
+      clearInterval(id);
+      resetBtn();
+    }, 2000);
   }
 }

@@ -82,7 +82,11 @@ canvas {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   aspect-ratio: 3/2;
+}
+.menue-fade {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #menue-top {
@@ -90,6 +94,24 @@ canvas {
   padding-top: 5%;
   padding-left: 12.5%;
   padding-right: 12.5%;
+}
+
+#text {
+  background-color: var(--btn-main);
+  border: 2px solid var(--btn-secendary);
+  border-radius: 30px;
+  box-shadow: var(--btn-secendary) 4px 4px 0 0;
+  color: var(--btn-secendary);
+  display: inline-block;
+  font-weight: 400;
+  font-size: 36px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  font-family: "zebars", Helvetica, sans-serif;
+  letter-spacing: 5px;
+  opacity: 0;
 }
 
 #menue-play {
@@ -119,8 +141,12 @@ canvas {
   animation: rotateFade 2s ease-in-out forwards;
 }
 
-.button-play-fade {
-  animation: Fade 2s ease-in-out forwards;
+.button-play-fade-out {
+  animation: FadeOut 2s ease-in-out forwards;
+}
+
+.button-play-fade-in {
+  animation: FadeIn 2s ease-in-out forwards;
 }
 
 .button-play:hover {
@@ -143,12 +169,21 @@ canvas {
   }
 }
 
-@keyframes Fade {
+@keyframes FadeOut {
   0% {
     opacity: 1;
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

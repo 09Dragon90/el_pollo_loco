@@ -69,13 +69,34 @@ function startGame(difficulty) {
 
 function animatedBtn(difficulty) {
   let btnPlayRefs = document.getElementsByClassName("button-play");
+  let textRef = document.getElementById("text");
+  let menueRef = document.getElementById("menue");
   for (let i = 0; i < btnPlayRefs.length; i++) {
+    btnPlayRefs[i].classList.remove("button-play-fade-in");
+    textRef.classList.remove("button-play-fade-in");
+    menueRef.classList.remove("menue-fade");
     if (btnPlayRefs[i].id == `btn-play-${difficulty}`) {
       btnPlayRefs[i].classList.add("button-play-action");
     } else {
-      btnPlayRefs[i].classList.add("button-play-fade");
+      btnPlayRefs[i].classList.add("button-play-fade-out");
     }
   }
+}
+
+function resetBtn() {
+  let btnPlayRefs = document.getElementsByClassName("button-play");
+  let menuePlayRef = document.getElementById("menue-play");
+  let textRef = document.getElementById("text");
+  let menueRef = document.getElementById("menue");
+  menuePlayRef.classList.remove("d-none");
+  textRef.classList.add("button-play-fade-in");
+  menueRef.classList.add("menue-fade");
+  for (let i = 0; i < btnPlayRefs.length; i++) {
+    btnPlayRefs[i].classList.remove("button-play-action");
+    btnPlayRefs[i].classList.remove("button-play-fade-out");
+    btnPlayRefs[i].classList.add("button-play-fade-in");
+  }
+  world.overlay = null;
 }
 
 function fullscreen() {
