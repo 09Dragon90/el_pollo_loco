@@ -65,13 +65,24 @@ class Character extends MoveableObject {
     "assets/img/2_character_pepe/4_hurt/H-42.png",
     "assets/img/2_character_pepe/4_hurt/H-43.png",
   ];
-  // walking_sound = new Audio("assets/audio/walking.mp3");
-  // jumping_sound = new Audio("assets/audio/jump.mp3");
-  // bottle_sound = new Audio("assets/audio/collectBottle.mp3");
-  // coin_sound = new Audio("assets/audio/collectCoin.mp3");
 
   constructor() {
     super();
+    this.loadAllImg();
+    this.loadSounds();
+    this.y = this.calY(this.height, this.overGroundY);
+    this.ground = this.y;
+    this.speedX = 5;
+    this.setHitbox(100, 10, 15, 15);
+    this.animation();
+    this.movements();
+    this.applyGravity();
+  }
+
+  /**
+   * Load all images in cache
+   */
+  loadAllImg() {
     this.loadImg(this.imagesIdle[0]);
     this.loadImages(this.imagesIdle);
     this.loadImages(this.imagesIdleLong);
@@ -79,15 +90,11 @@ class Character extends MoveableObject {
     this.loadImages(this.imagesJump);
     this.loadImages(this.imagesDead);
     this.loadImages(this.imagesHurt);
-    this.loadSounds();
-    this.y = this.calY(this.height, this.overGroundY);
-    this.ground = this.y;
-    this.speedX = 5;
-    this.setHitbox(100, 10, 15, 15);
-    this.animation();
-    this.applyGravity();
   }
 
+  /**
+   * Load all Sounds
+   */
   loadSounds() {
     this.createdSound("assets/audio/walking.mp3", "walking_sound");
     this.createdSound("assets/audio/jump.mp3", "jumping_sound");
@@ -97,50 +104,10 @@ class Character extends MoveableObject {
     this.createdSound("assets/audio/pain.mp3", "pain_sound");
   }
 
+  /**
+   * Play the animations
+   */
   animation() {
-    this.stoppableInterval(
-      setInterval(() => {
-        this.sounds.walking_sound.pause();
-        if (
-          this.world.keybord.Right &&
-          this.x < this.world.level.lengthOfLevel - this.width &&
-          !this.isDead()
-        ) {
-          this.sounds.walking_sound.play();
-          this.isFlipped = false;
-          this.moveRight();
-        }
-        if (this.world.keybord.Left && this.x > -600 && !this.isDead()) {
-          this.sounds.walking_sound.play();
-          this.isFlipped = true;
-          this.moveLeft();
-        }
-        if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
-          this.jump();
-          this.sounds.jumping_sound.play();
-        }
-        if (
-          this.world.keybord.Space &&
-          !this.bottleIsThrow &&
-          this.numbersOfBottles > 0
-        ) {
-          this.world.bottles.push(
-            new ThrowableObject(
-              this.x + this.width - 50,
-              this.y + this.height / 2
-            )
-          );
-          this.numbersOfBottles -= 5;
-          this.bottleIsThrow = true;
-          setTimeout(() => {
-            this.bottleIsThrow = false;
-          }, 100);
-        }
-        if (this.x < this.world.level.lengthOfLevel - 620) {
-          this.world.camera_x = -this.x + 100;
-        }
-      }, 1000 / 60)
-    );
     this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
@@ -167,11 +134,18 @@ class Character extends MoveableObject {
     );
   }
 
+  /**
+   * Stop the snoring
+   */
   stopSnoring() {
     this.timeLongIdle = 0;
     this.sounds.snoring_sound.pause();
   }
 
+  /**
+   * Collect the item
+   * @param {String} type - Type of collecteble item
+   */
   collectItem(type) {
     switch (type) {
       case "coin":
@@ -182,6 +156,80 @@ class Character extends MoveableObject {
         this.numbersOfBottles += 5;
         this.sounds.bottle_sound.play();
         break;
+    }
+  }
+
+  /**
+   * Moving the Character
+   */
+  movements() {
+    this.stoppableInterval(
+      setInterval(() => {
+        this.sounds.walking_sound.pause();
+        this.movementRight();
+        this.movementLeft();
+        this.movementJump();
+        this.throwBottle();
+        if (this.x < this.world.level.lengthOfLevel - 620) {
+          this.world.camera_x = -this.x + 100;
+        }
+      }, 1000 / 60)
+    );
+  }
+
+  /**
+   * Check character must be move left
+   */
+  movementRight() {
+    if (
+      this.world.keybord.Right &&
+      this.x < this.world.level.lengthOfLevel - this.width &&
+      !this.isDead()
+    ) {
+      this.sounds.walking_sound.play();
+      this.isFlipped = false;
+      this.moveRight();
+    }
+  }
+
+  /**
+   * Check character must be move left
+   */
+  movementLeft() {
+    if (this.world.keybord.Left && this.x > -600 && !this.isDead()) {
+      this.sounds.walking_sound.play();
+      this.isFlipped = true;
+      this.moveLeft();
+    }
+  }
+
+  /**
+   * Check character must be left
+   */
+  movementJump() {
+    if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
+      this.jump();
+      this.sounds.jumping_sound.play();
+    }
+  }
+
+  /**
+   * If Character has bottles created a new bottle
+   */
+  throwBottle() {
+    if (
+      this.world.keybord.Space &&
+      !this.bottleIsThrow &&
+      this.numbersOfBottles > 0
+    ) {
+      this.world.bottles.push(
+        new ThrowableObject(this.x + this.width - 50, this.y + this.height / 2)
+      );
+      this.numbersOfBottles -= 5;
+      this.bottleIsThrow = true;
+      setTimeout(() => {
+        this.bottleIsThrow = false;
+      }, 100);
     }
   }
 }
