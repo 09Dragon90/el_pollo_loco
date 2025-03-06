@@ -9,6 +9,9 @@ class Cloud extends MoveableObject {
     this.animation();
   }
 
+  /**
+   * Play the animations
+   */
   animation() {
     this.stoppableInterval(
       setInterval(() => {
