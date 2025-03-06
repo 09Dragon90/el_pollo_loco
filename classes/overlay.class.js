@@ -25,11 +25,17 @@ class Overlay extends DrawableObject {
     }
   }
 
+  /**
+   * Load all Sounds
+   */
   loadSounds() {
     this.createdSound("assets/audio/gameLose.mp3", "lose_sound");
     this.createdSound("assets/audio/gameWin.mp3", "win_sound");
   }
 
+  /**
+   * Load the lose screen
+   */
   loadLoseScreen() {
     let index = Math.floor(Math.random() * 4);
     this.loadImg(this.imagesGameOver[index]);
@@ -39,6 +45,9 @@ class Overlay extends DrawableObject {
     this.height = 480;
   }
 
+  /**
+   * Load the win screen
+   */
   loadWinScreen() {
     this.loadImg(this.imagesWin);
     this.width = 370;
@@ -47,6 +56,9 @@ class Overlay extends DrawableObject {
     this.y = (this.canvasHeight - this.height) / 2;
   }
 
+  /**
+   * Play the animations
+   */
   animation() {
     const id = setInterval(() => {
       let scaleFactor = 1.1;
@@ -65,7 +77,14 @@ class Overlay extends DrawableObject {
       this.x = (this.canvasWidth - this.width) / 2;
       this.y = (this.canvasHeight - this.height) / 2;
     }, 100);
+    this.stopAnimation(id);
+  }
 
+  /**
+   * Stop the animations
+   * @param {number} id - Id of intervall for animation
+   */
+  stopAnimation(id) {
     setTimeout(() => {
       clearInterval(id);
       resetBtn();
