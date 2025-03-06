@@ -26,6 +26,10 @@ class World {
     this.createStartScreen(this.ctx);
   }
 
+  /**
+   * Starts the game
+   * @param {Object} level - Object of level
+   */
   startGame(level) {
     this.gameRun = true;
     this.level = level;
@@ -37,11 +41,18 @@ class World {
     this.run();
   }
 
+  /**
+   * Starts the game music
+   */
   startGameMusic() {
     this.sound_Game.loop = true;
     this.sound_Game.play();
   }
 
+  /**
+   * Created the Startscreen
+   * @param {object} ctx - Contextobject
+   */
   createStartScreen(ctx) {
     let img = new Image();
     img.src = "assets/img/9_intro_outro_screens/start/startscreen_1.png";
@@ -50,6 +61,9 @@ class World {
     };
   }
 
+  /**
+   * Function for checking all collitions
+   */
   run() {
     this.idRunIntervall = setInterval(() => {
       this.collitionCharacter();
@@ -59,6 +73,9 @@ class World {
     }, 50);
   }
 
+  /**
+   * Ends the game
+   */
   endGame() {
     if (this.allEnemiesDead()) {
       clearInterval(this.idRunIntervall);
@@ -71,6 +88,9 @@ class World {
     }
   }
 
+  /**
+   * Checking if character collision with everyone
+   */
   collitionCharacter() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isHittingFromTop(enemy)) {
@@ -83,6 +103,9 @@ class World {
     });
   }
 
+  /**
+   * Checking if bottle collision with enemy
+   */
   collitionBottle() {
     this.bottles.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
@@ -98,6 +121,9 @@ class World {
     });
   }
 
+  /**
+   * Checking if character collision with collectable item
+   */
   collitionCollectable() {
     this.level.collectableItems.forEach((item) => {
       if (this.character.isColliding(item)) {
@@ -109,6 +135,9 @@ class World {
     });
   }
 
+  /**
+   * If hit endboss aktivated statusbar
+   */
   hitEndboss(enemy) {
     let indexEndboss = this.level.enemies.length - 1;
     enemy.hit();
@@ -118,11 +147,18 @@ class World {
     }
   }
 
+  /**
+   * Let bottle splash and deleted this intsanz
+   * @param {object} bottle - Object of bottle
+   */
   bottleSplash(bottle) {
     bottle.splash();
     this.deletedInstanz(bottle, this.bottles, 700);
   }
 
+  /**
+   * activated statusbar of endboss
+   */
   addStatusbarEndboss() {
     if (!this.hasBarEndboss()) {
       this.bars = {
@@ -132,15 +168,25 @@ class World {
     }
   }
 
+  /**
+   * Check endboss has a statusbar
+   * @returns true or false
+   */
   hasBarEndboss() {
     let keys = Object.keys(this.bars);
     return keys.includes("endboss");
   }
 
+  /**
+   * Set the object of world to the character
+   */
   setWorld() {
     this.character.world = this;
   }
 
+  /**
+   * Draw all objects
+   */
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0);
@@ -161,6 +207,10 @@ class World {
     });
   }
 
+  /**
+   * Added a object to the context
+   * @param {object} obj
+   */
   addToMap(obj) {
     if (obj.isFlipped) {
       this.ctx.save();
@@ -183,6 +233,10 @@ class World {
     // obj.drawBorder(this.ctx);
   }
 
+  /**
+   * Added a array of objects to the context
+   * @param {Array} objArray
+   */
   addObjectsToMap(objArray) {
     if (typeof objArray === "object") objArray = Object.values(objArray);
     objArray.forEach((obj) => {
@@ -190,6 +244,12 @@ class World {
     });
   }
 
+  /**
+   * Deleted a object from a array after a time
+   * @param {object} obj - Object to delet
+   * @param {Array} array - Array of the deleted object
+   * @param {number} time - Time after this the object will delet
+   */
   deletedInstanz(obj, array, time) {
     setTimeout(() => {
       const index = array.findIndex((e) => e.instanzId == obj.instanzId);
@@ -197,6 +257,10 @@ class World {
     }, time);
   }
 
+  /**
+   * Check all emenies are dead
+   * @returns true or false
+   */
   allEnemiesDead() {
     let allDead = true;
     this.level.enemies.forEach((enemy) => {
@@ -207,6 +271,9 @@ class World {
     return allDead;
   }
 
+  /**
+   * Stop the game
+   */
   stopGame() {
     this.sound_Game.pause();
     setTimeout(() => {
@@ -216,12 +283,20 @@ class World {
     }, 2000);
   }
 
+  /**
+   * Stopps all intervalls in the array
+   * @param {Array} array - Array of ids from intervalls
+   */
   stopIntervals(array) {
     array.forEach((e) => {
       e.stopIntervals();
     });
   }
 
+  /**
+   * Set the mute status of audios
+   * @param {boolean} muteSound - Status of mute
+   */
   muteAllSounds(muteSound) {
     this.muteSound = muteSound;
     this.sound_Game.muted = muteSound;
@@ -233,6 +308,10 @@ class World {
     }
   }
 
+  /**
+   * Set the mute status of audios in the Array
+   * @param {Array} arr - Array with the sounds
+   */
   muteSoundsArr(arr) {
     for (let i = 0; i < arr.length; i++) {
       arr[i].muteSounds(this.muteSound);
