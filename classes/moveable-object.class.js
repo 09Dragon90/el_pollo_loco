@@ -13,30 +13,52 @@ class MoveableObject extends DrawableObject {
   lastHit = 0;
   acceleration = 2;
 
+  /**
+   * Calculat the coordinats of Y
+   * @param {number} height - Height of object
+   * @param {number} overGroundY - Position over ground
+   * @returns Coordinats Y
+   */
   calY(height, overGroundY) {
     return overGroundY - height;
   }
 
+  /**
+   * Increased the x coordinats
+   */
   moveRight() {
     this.x += this.speedX;
     this.hitbox.x += this.speedX;
   }
 
+  /**
+   * Decreases the x coordinats
+   */
   moveLeft() {
     this.x -= this.speedX;
     this.hitbox.x -= this.speedX;
   }
 
+  /**
+   * Starts the jump
+   */
   jump() {
     this.currentImage = 0;
     this.speedY = 20;
   }
 
+  /**
+   * Starts a bouncer
+   */
   bouncer() {
     this.currentImage = 0;
     this.speedY = 10;
   }
 
+  /**
+   * Load the image from the cache
+   * @param {Array} images - Array of images
+   */
   animatedImages(images) {
     let i = this.currentImage % images.length;
     let path = images[i];
@@ -44,6 +66,10 @@ class MoveableObject extends DrawableObject {
     this.currentImage++;
   }
 
+  /**
+   * Load the image from the cache only once time
+   * @param {Array} images - Array of images
+   */
   animatedImagesOnce(images) {
     if (this.currentImage < images.length) {
       let i = this.currentImage % images.length;
@@ -55,6 +81,11 @@ class MoveableObject extends DrawableObject {
     return true;
   }
 
+  /**
+   * Check if the Object colliding with this Object
+   * @param {Object} obj - Object for check
+   * @returns - Is Objects colliding
+   */
   isColliding(obj) {
     return (
       this.hitbox.x + this.hitbox.width >= obj.hitbox.x &&
@@ -66,6 +97,11 @@ class MoveableObject extends DrawableObject {
     );
   }
 
+  /**
+   * Check if the Object colliding from top with this Object
+   * @param {Object} obj - Object for check
+   * @returns - Is Objects colliding
+   */
   isHittingFromTop(obj) {
     if (this.speedY <= 0 && this.isOverGroung()) {
       return (
@@ -80,6 +116,9 @@ class MoveableObject extends DrawableObject {
     return false;
   }
 
+  /**
+   * Decrease the energy
+   */
   hit() {
     if (!this.isDead() && !this.isHurt()) {
       this.energy -= 5;
@@ -87,15 +126,26 @@ class MoveableObject extends DrawableObject {
     }
   }
 
+  /**
+   * Checks if this object energy below zero
+   * @returns If dead
+   */
   isDead() {
     return this.energy <= 0;
   }
 
+  /**
+   * Check if the object was last hit more than 1 second ago.
+   * @returns If object safe
+   */
   isHurt() {
     let timeDifference = (new Date().getTime() - this.lastHit) / 1000;
     return timeDifference < 1;
   }
 
+  /**
+   * Aktived the gravity after jump or bouncer
+   */
   applyGravity() {
     this.stoppableInterval(
       setInterval(() => {
@@ -108,10 +158,17 @@ class MoveableObject extends DrawableObject {
     );
   }
 
+  /**
+   * Check is the object in the air
+   * @returns - True or False
+   */
   isOverGroung() {
     return this.y < this.ground;
   }
 
+  /**
+   * Drops the object from the canvas
+   */
   fallOut() {
     this.y -= 100;
     this.stoppableInterval(
@@ -121,6 +178,9 @@ class MoveableObject extends DrawableObject {
     );
   }
 
+  /**
+   * Stopps the intervalls of object and load the dead image
+   */
   playAnimationsDead() {
     this.stopIntervals();
     this.currentImage = 0;
