@@ -5,6 +5,7 @@ let dialogRef;
  */
 function openDialog(type) {
   dialogRef = document.getElementById(`dialog${type}`);
+  dialogRef.classList.add("d-flex");
   dialogRef.showModal();
 }
 
@@ -14,12 +15,12 @@ function openDialog(type) {
  */
 function closeDialog(event) {
   if (event.target === dialogRef) {
+    dialogRef.classList.remove("d-flex");
     dialogRef.close();
   }
 }
 
 // TODO
-// Impressum muss mit einem klick erreichbar sein
 // Mute in Local Storage speichern
 // Schaden am Pepe vergrößern
 // Nach Jump ist pepe nicht auf gleicher höhe

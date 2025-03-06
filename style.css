@@ -42,14 +42,42 @@ dialog {
   overflow: hidden;
   color: var(--btn-secendary);
   padding: 0;
+  max-height: 90vh;
+  flex-direction: column;
 }
 
 .dialog-body {
-  padding: 16px;
+  margin: 10px;
+  padding: 6px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.d-flex {
+  display: flex;
 }
 
 dialog:focus-visible {
   outline: none;
+}
+
+dialog {
+  scrollbar-width: auto;
+  scrollbar-color: var(--btn-secendary) transparent;
+}
+
+dialog::-webkit-scrollbar {
+  width: 16px;
+}
+
+dialog::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+dialog::-webkit-scrollbar-thumb {
+  background-color: var(--btn-secendary);
+  border-radius: 10px;
+  border: 3px solid transparent;
 }
 
 h1 {

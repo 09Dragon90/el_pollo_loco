@@ -27,6 +27,67 @@
         </p>
       </div>
     </dialog>
+    <dialog onclick="closeDialog(event)" id="dialogImpressum">
+      <div class="dialog-body">
+        <h2>Impressum</h2>
+      <p class="impressum">Angaben gemäß § 5 DDG</p>
+      <p class="impressum">
+        Niko Helwig<br />
+        <br />
+        Erbacher Straße 24<br />
+        55494 Rheinböllen <br />
+      </p>
+      <p class="impressum">
+        <strong>Vertreten durch: </strong><br />
+        Niko Helwig<br />
+      </p>
+      <p class="impressum">
+        <strong>Kontakt:</strong> <br />
+        Telefon: 06764-7490710<br />
+        E-Mail:
+        <a href="mailto:niko.helwig@stickerei-helwig.de"
+          >niko.helwig@stickerei-helwig.de</a
+        ><br />
+      </p>
+      <p class="impressum">
+        <strong>Haftungsausschluss: </strong><br /><br /><strong
+          >Haftung für Links</strong
+        ><br /><br />
+        Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
+        Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden
+        Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
+        Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten
+        verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
+        Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte
+        waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente
+        inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete
+        Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden
+        von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+      </p>
+      <br />
+      Erstellt mit dem
+      <a href="https://websitewissen.com/impressum-generator" rel="dofollow"
+        >Impressum-Generator</a
+      >
+      von WebsiteWissen.com, dem Ratgeber für
+      <a href="https://websitewissen.com/website-erstellen" rel="dofollow"
+        >Website-Erstellung</a
+      >,
+      <a
+        href="https://websitewissen.com/homepage-baukasten-vergleich"
+        rel="dofollow"
+        >Homepage-Baukästen</a
+      >
+      und
+      <a href="https://websitewissen.com/shopsysteme-vergleich" rel="dofollow"
+        >Shopsysteme</a
+      >. Rechtstext von der
+      <a href="https://www.kanzlei-hasselbach.de/" rel="dofollow"
+        >Kanzlei Hasselbach</a
+      >.
+    </div>
+      </div>
+    </dialog>
     <div class="game">
       <canvas id="canvas" width="720" height="480"></canvas>
       <div class="menue" id="menue">
@@ -91,6 +152,13 @@
               onclick="openDialog('Controls')"
             >
               <img src="./assets/icons/question-solid.svg" />
+            </div>
+            <div
+              class="button-control"
+              id="buttonImpressum"
+              onclick="openDialog('Impressum')"
+            >
+              <img src="./assets/icons/section-solid.svg" />
             </div>
           </div>
         </div>
