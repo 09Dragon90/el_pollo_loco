@@ -223,7 +223,11 @@ class Character extends MoveableObject {
       this.numbersOfBottles > 0
     ) {
       this.world.bottles.push(
-        new ThrowableObject(this.x + this.width - 50, this.y + this.height / 2)
+        new ThrowableObject(
+          this.x + this.width - 50,
+          this.y + this.height / 2,
+          this.world.muteSound
+        )
       );
       this.numbersOfBottles -= 5;
       this.bottleIsThrow = true;

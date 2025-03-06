@@ -15,9 +15,7 @@ class ThrowableObject extends MoveableObject {
     "assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
   ];
 
-  splash_sound = new Audio("assets/audio/glassBroken.mp3");
-
-  constructor(x, y) {
+  constructor(x, y, muteSound) {
     super();
     this.createdId();
     this.x = x;
@@ -30,8 +28,17 @@ class ThrowableObject extends MoveableObject {
     this.loadImg(this.imagesRotaition[3]);
     this.loadImages(this.imagesRotaition);
     this.loadImages(this.imagesSplash);
+    this.loadSounds();
+    this.muteSounds(muteSound);
     this.throw();
     this.applyGravity();
+  }
+
+  /**
+   * Load all Sounds
+   */
+  loadSounds() {
+    this.createdSound("assets/audio/glassBroken.mp3", "splash_sound");
   }
 
   throw() {
@@ -48,7 +55,7 @@ class ThrowableObject extends MoveableObject {
     this.stopIntervals();
     this.deletHitbox();
     this.currentImage = 0;
-    this.splash_sound.play();
+    this.sounds.splash_sound.play();
     this.stoppableInterval(
       setInterval(() => {
         if (this.animatedImagesOnce(this.imagesSplash)) {

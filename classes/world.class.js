@@ -228,6 +228,14 @@ class World {
     if (world.gameRun) {
       this.character.muteSounds(muteSound);
       if (this instanceof Overlay) this.overlay.muteSounds(muteSound);
+      this.muteSoundsArr(this.level.enemies);
+      this.muteSoundsArr(this.bottles);
+    }
+  }
+
+  muteSoundsArr(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].muteSounds(this.muteSound);
     }
   }
 }
