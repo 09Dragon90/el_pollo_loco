@@ -24,7 +24,6 @@ function closeDialog(event) {
 // Mute in Local Storage speichern
 // Schaden am Pepe vergrößern
 // Nach Jump ist pepe nicht auf gleicher höhe
-// Nach Lose keine Buttons für replay
 // Buttens Steuerung bei Ipad schon einplenden
 // Buttons Kontext menue unterdrücken
 // Hitbox chickens kleiner machen

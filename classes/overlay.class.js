@@ -22,6 +22,7 @@ class Overlay extends DrawableObject {
     } else {
       this.loadLoseScreen();
       this.sounds.lose_sound.play();
+      this.stopAnimation();
     }
   }
 
