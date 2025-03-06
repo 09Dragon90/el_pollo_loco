@@ -16,7 +16,7 @@
     <div id="warning-message">
       This website is only viewable in landscape mode
     </div>
-    <dialog onclick="closeDialog(event)" id="dialog">
+    <dialog onclick="closeDialog(event)" id="dialogControls">
       <div class="dialog-body">
         <h2>Controls</h2>
         <p class="controls">
@@ -25,7 +25,6 @@
           W - Jump <br />
           Space - Bottle throwing <br />
         </p>
-        <a href="./impressum.html">Impressum</a>
       </div>
     </dialog>
     <div class="game">
@@ -86,7 +85,11 @@
             >
               <img src="./assets/icons/expand-solid.svg" />
             </div>
-            <div class="button-control" id="buttonMenue" onclick="openDialog()">
+            <div
+              class="button-control"
+              id="buttonMenue"
+              onclick="openDialog('Controls')"
+            >
               <img src="./assets/icons/question-solid.svg" />
             </div>
           </div>

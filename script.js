@@ -1,9 +1,10 @@
-let dialogRef = document.getElementById("dialog");
+let dialogRef;
 
 /**
  * Open the Dialog
  */
-function openDialog() {
+function openDialog(type) {
+  dialogRef = document.getElementById(`dialog${type}`);
   dialogRef.showModal();
 }
 
