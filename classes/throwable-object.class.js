@@ -25,13 +25,19 @@ class ThrowableObject extends MoveableObject {
     this.ground = 480;
     this.speedY = 20;
     this.setHitbox();
+    this.loadAllImg();
+    this.loadSounds();
+    this.throw();
+    this.applyGravity();
+  }
+
+  /**
+   * Load all images in cache
+   */
+  loadAllImg() {
     this.loadImg(this.imagesRotaition[3]);
     this.loadImages(this.imagesRotaition);
     this.loadImages(this.imagesSplash);
-    this.loadSounds();
-    this.muteSounds(muteSound);
-    this.throw();
-    this.applyGravity();
   }
 
   /**
@@ -39,8 +45,12 @@ class ThrowableObject extends MoveableObject {
    */
   loadSounds() {
     this.createdSound("assets/audio/glassBroken.mp3", "splash_sound");
+    this.muteSounds(muteSound);
   }
 
+  /**
+   * Throw the bottle
+   */
   throw() {
     this.stoppableInterval(
       setInterval(() => {
@@ -51,6 +61,9 @@ class ThrowableObject extends MoveableObject {
     );
   }
 
+  /**
+   * Splash the bottle
+   */
   splash() {
     this.stopIntervals();
     this.deletHitbox();
