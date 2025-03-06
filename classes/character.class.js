@@ -123,7 +123,7 @@ class Character extends MoveableObject {
         } else if (this.world.keybord.Right || this.world.keybord.Left) {
           this.stopSnoring();
           this.animatedImages(this.imagesWalk);
-        } else if (this.timeLongIdle > 150) {
+        } else if (this.timeLongIdle > 60) {
           this.animatedImages(this.imagesIdleLong);
           this.sounds.snoring_sound.play();
         } else {
