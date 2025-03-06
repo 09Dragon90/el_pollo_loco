@@ -21,7 +21,6 @@ function closeDialog(event) {
 }
 
 // TODO
-// Mute in Local Storage speichern
 // Schaden am Pepe vergrößern
 // Nach Jump ist pepe nicht auf gleicher höhe
 // Buttens Steuerung bei Ipad schon einplenden

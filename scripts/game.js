@@ -1,12 +1,14 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let muteSound = false;
+let muteSound;
 
 /**
  * Initalfunction load the world
  */
 function init() {
+  muteSound = loadFromLocalStorage();
+  changeImageButton(muteSound);
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard, muteSound);
   addTouchEvent();
@@ -125,16 +127,32 @@ function fullscreen() {
   }
 }
 
+// Speichert den Status im LocalStorage
+function setStatus(status) {
+  localStorage.setItem("setting", JSON.stringify(status));
+}
+
+// Liest den Status aus dem LocalStorage, gibt false zurück, wenn nichts gespeichert ist
+function loadFromLocalStorage() {
+  const status = localStorage.getItem("setting");
+  return status ? JSON.parse(status) : false;
+}
+
 document.getElementById("buttonSound").addEventListener("click", () => {
   muteSound = !muteSound;
+  setStatus(muteSound);
   world.muteAllSounds(muteSound);
+  changeImageButton(muteSound);
+});
+
+function changeImageButton(muteSound) {
   let img = document.querySelector("#buttonSound img");
   if (muteSound) {
     img.src = "./assets/icons/volume-mute-solid.svg";
   } else {
     img.src = "./assets/icons/volume-up-solid.svg";
   }
-});
+}
 
 window.addEventListener("keydown", (e) => {
   setButton(e.keyCode, true);
