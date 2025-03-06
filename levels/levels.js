@@ -1,3 +1,7 @@
+/**
+ * Created the level with the difficulty
+ * @param {string} difficulty - difficulty of level
+ */
 function createdLevel(difficulty) {
   let level;
 
