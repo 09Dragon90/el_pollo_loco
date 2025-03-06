@@ -42,18 +42,16 @@ class Endboss extends MoveableObject {
 
   constructor(lengthOfLevel) {
     super();
-    this.loadImg(this.imagesAlert[1]);
-    this.loadImages(this.imagesWalking);
-    this.loadImages(this.imagesAlert);
-    this.loadImages(this.imagesAttack);
-    this.loadImages(this.imagesHurt);
-    this.loadImages(this.imagesDead);
+    this.loadAllImg();
     this.loadSounds();
     this.x = lengthOfLevel - this.width - 50;
     this.y = this.calY(this.height, this.overGroundY) + 10;
     this.setHitbox(60, 10, 30, 10);
   }
 
+  /**
+   * Play the animations
+   */
   animation() {
     this.stoppableInterval(
       this.stoppableInterval(
@@ -64,7 +62,12 @@ class Endboss extends MoveableObject {
         }, 1000 / 150)
       )
     );
+  }
 
+  /**
+   * Moving the Character
+   */
+  movements() {
     this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
@@ -78,11 +81,29 @@ class Endboss extends MoveableObject {
     );
   }
 
+  /**
+   * Load all images in cache
+   */
+  loadAllImg() {
+    this.loadImg(this.imagesAlert[1]);
+    this.loadImages(this.imagesWalking);
+    this.loadImages(this.imagesAlert);
+    this.loadImages(this.imagesAttack);
+    this.loadImages(this.imagesHurt);
+    this.loadImages(this.imagesDead);
+  }
+
+  /**
+   * Load all Sounds
+   */
   loadSounds() {
     this.createdSound("assets/audio/hitChicken.mp3", "hit_sound");
     this.createdSound("assets/audio/roosterCrows.mp3", "wake_sound");
   }
 
+  /**
+   * If enemy hit delet hitbox and load dead img
+   */
   hit() {
     if (this.sleep) this.wakeUp();
     if (!this.isDead() && !this.isHurt()) {
@@ -94,8 +115,12 @@ class Endboss extends MoveableObject {
     if (this.isDead()) this.deletHitbox();
   }
 
+  /**
+   * Wake up the endboss
+   */
   wakeUp() {
     this.animation();
+    this.movements();
     this.sounds.wake_sound.play();
     this.sleep = false;
     this.lastHit = new Date().getTime();
