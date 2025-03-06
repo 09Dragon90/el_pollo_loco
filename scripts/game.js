@@ -3,20 +3,18 @@ let world;
 let keyboard = new Keyboard();
 let muteSound = false;
 
+/**
+ * Initalfunction load the world
+ */
 function init() {
   canvas = document.getElementById("canvas");
   world = new World(canvas, keyboard, muteSound);
   addTouchEvent();
 }
 
-window.addEventListener("keydown", (e) => {
-  setButton(e.keyCode, true);
-});
-
-window.addEventListener("keyup", (e) => {
-  setButton(e.keyCode, false);
-});
-
+/**
+ * Add the Touchevent to the buttons
+ */
 function addTouchEvent() {
   const el = document.getElementsByClassName("button-control");
   for (let i = 0; i < el.length; i++) {
@@ -30,6 +28,11 @@ function addTouchEvent() {
   }
 }
 
+/**
+ * Set the status of the key
+ * @param {string/number} keyCode - Code of pressed key
+ * @param {boolean} status - key is pressed or released
+ */
 function setButton(keyCode, status) {
   switch (keyCode) {
     case "buttonRight":
@@ -58,6 +61,10 @@ function setButton(keyCode, status) {
   }
 }
 
+/**
+ * Starts a game
+ * @param {string} difficulty - difficulty of level
+ */
 function startGame(difficulty) {
   let menuePlayRef = document.getElementById("menue-play");
   animatedBtn(difficulty);
@@ -67,6 +74,10 @@ function startGame(difficulty) {
   }, 1500);
 }
 
+/**
+ * Starts the animations of buttons
+ * @param {string} difficulty - difficulty of level
+ */
 function animatedBtn(difficulty) {
   let btnPlayRefs = document.getElementsByClassName("button-play");
   let textRef = document.getElementById("text");
@@ -83,6 +94,9 @@ function animatedBtn(difficulty) {
   }
 }
 
+/**
+ * Reset the buttons für replay
+ */
 function resetBtn() {
   let btnPlayRefs = document.getElementsByClassName("button-play");
   let menuePlayRef = document.getElementById("menue-play");
@@ -99,6 +113,9 @@ function resetBtn() {
   world.overlay = null;
 }
 
+/**
+ * Aktivated the Fullscreen
+ */
 function fullscreen() {
   let el = document.getElementById("canvas");
   if (el.webkitRequestFullScreen) {
@@ -117,4 +134,12 @@ document.getElementById("buttonSound").addEventListener("click", () => {
   } else {
     img.src = "./assets/icons/volume-up-solid.svg";
   }
+});
+
+window.addEventListener("keydown", (e) => {
+  setButton(e.keyCode, true);
+});
+
+window.addEventListener("keyup", (e) => {
+  setButton(e.keyCode, false);
 });
