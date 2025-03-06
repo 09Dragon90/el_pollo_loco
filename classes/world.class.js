@@ -230,7 +230,6 @@ class World {
         console.warn(error);
       }
     }
-    // obj.drawBorder(this.ctx);
   }
 
   /**

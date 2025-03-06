@@ -26,4 +26,3 @@ function closeDialog(event) {
 // Nach Jump ist pepe nicht auf gleicher höhe
 // Buttens Steuerung bei Ipad schon einplenden
 // Buttons Kontext menue unterdrücken
-// Hitbox chickens kleiner machen

@@ -23,7 +23,7 @@ class Chicken extends MoveableObject {
     this.small = small;
     this.createdEnemy(lengthOfLevel);
     this.speed = 0.15 + Math.random() * 0.5;
-    this.setHitbox(0, 0, 0, 0);
+    this.setHitbox(5, 0, 0, 0);
     this.loadSounds();
     this.animation();
     this.movements();
