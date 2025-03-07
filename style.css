@@ -20,6 +20,8 @@
 
 body {
   background-image: url(assets/img/background.png);
+  background-size: cover;
+  background-position: center;
   font-family: "zebars", Helvetica, sans-serif;
 }
 
@@ -64,6 +66,7 @@ dialog:focus-visible {
 dialog {
   scrollbar-width: auto;
   scrollbar-color: var(--btn-secendary) transparent;
+  max-width: 1440px;
 }
 
 dialog::-webkit-scrollbar {
