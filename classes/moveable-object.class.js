@@ -153,6 +153,9 @@ class MoveableObject extends DrawableObject {
           this.y -= this.speedY;
           this.hitbox.y -= this.speedY;
           if (this.speedY > -16) this.speedY -= this.acceleration;
+        } else {
+          this.y = this.ground;
+          this.hitbox.y = this.ground + 100;
         }
       }, 1000 / 25)
     );
