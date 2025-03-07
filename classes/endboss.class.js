@@ -123,6 +123,6 @@ class Endboss extends MoveableObject {
     this.movements();
     this.sounds.wake_sound.play();
     this.sleep = false;
-    this.lastHit = new Date().getTime();
+    this.lastHit = new Date().getTime() - 1000;
   }
 }

@@ -112,6 +112,11 @@ class World {
   hitWithEnemy(enemy) {
     if (enemy instanceof Endboss) {
       this.character.hit(40);
+      if (enemy.sleep) {
+        this.addStatusbarEndboss();
+        this.bars["endboss"].setPercent(enemy.energy);
+        enemy.wakeUp();
+      }
     } else {
       this.character.hit(20);
     }
