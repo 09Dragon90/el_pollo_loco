@@ -152,6 +152,10 @@ document.getElementById("buttonSound").addEventListener("click", () => {
   changeImageButton(muteSound);
 });
 
+/**
+ * Change the image in Button for mute
+ * @param {boolean} muteSound - Status of mute
+ */
 function changeImageButton(muteSound) {
   let img = document.querySelector("#buttonSound img");
   if (muteSound) {
