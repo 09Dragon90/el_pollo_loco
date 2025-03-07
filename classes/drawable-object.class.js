@@ -111,4 +111,29 @@ class DrawableObject {
       height: 0,
     };
   }
+
+  /**
+   * Draw the hitbox
+   * @param {object} ctx - context
+   */
+  drawBorder(ctx) {
+    if (
+      this instanceof Character ||
+      this instanceof Chicken ||
+      this instanceof Endboss ||
+      this instanceof ThrowableObject ||
+      this instanceof CollectableObject
+    ) {
+      ctx.beginPath();
+      ctx.lineWidth = "4";
+      ctx.strokeStyle = "red";
+      ctx.rect(
+        this.hitbox.x,
+        this.hitbox.y,
+        this.hitbox.width,
+        this.hitbox.height
+      );
+      ctx.stroke();
+    }
+  }
 }
