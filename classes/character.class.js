@@ -126,7 +126,7 @@ class Character extends MoveableObject {
           this.animatedImages(this.imagesIdle);
           this.timeLongIdle++;
         }
-      }, 100)
+      }, 50)
     );
   }
 
