@@ -20,5 +20,4 @@ function closeDialog(event) {
   }
 }
 
-// TODO Cooldown auf Bottle nicht auf Endboss
 // TODO Flasche auch nach links werfen

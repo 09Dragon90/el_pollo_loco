@@ -233,7 +233,7 @@ class Character extends MoveableObject {
       this.stopSnoring();
       setTimeout(() => {
         this.bottleIsThrow = false;
-      }, 100);
+      }, 1000);
     }
   }
 }
