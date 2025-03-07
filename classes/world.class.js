@@ -94,10 +94,10 @@ class World {
   collitionCharacter() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isHittingFromTop(enemy)) {
-        enemy.hit();
+        enemy.hit(5);
         this.character.bouncer();
       } else if (this.character.isColliding(enemy)) {
-        this.character.hit();
+        this.character.hit(20);
         this.bars["health"].setPercent(this.character.energy);
       }
     });
@@ -110,7 +110,7 @@ class World {
     this.bottles.forEach((bottle) => {
       this.level.enemies.forEach((enemy) => {
         if (bottle.isColliding(enemy) && enemy instanceof Chicken) {
-          enemy.hit();
+          enemy.hit(5);
           this.bottleSplash(bottle);
         } else if (bottle.isColliding(enemy) && enemy instanceof Endboss) {
           this.hitEndboss(enemy);
@@ -140,7 +140,7 @@ class World {
    */
   hitEndboss(enemy) {
     let indexEndboss = this.level.enemies.length - 1;
-    enemy.hit();
+    enemy.hit(5);
     if (!this.level.enemies[indexEndboss].sleep) {
       this.addStatusbarEndboss();
       this.bars["endboss"].setPercent(enemy.energy);

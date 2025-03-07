@@ -119,9 +119,9 @@ class MoveableObject extends DrawableObject {
   /**
    * Decrease the energy
    */
-  hit() {
+  hit(damage) {
     if (!this.isDead() && !this.isHurt()) {
-      this.energy -= 5;
+      this.energy -= damage;
       this.lastHit = new Date().getTime();
     }
   }
