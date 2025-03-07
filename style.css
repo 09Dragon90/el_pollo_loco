@@ -148,20 +148,6 @@ canvas {
 }
 
 #text {
-  background-color: var(--btn-main);
-  border: 2px solid var(--btn-secendary);
-  border-radius: 30px;
-  box-shadow: var(--btn-secendary) 4px 4px 0 0;
-  color: var(--btn-secendary);
-  display: inline-block;
-  font-weight: 400;
-  font-size: 36px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  font-family: "zebars", Helvetica, sans-serif;
-  letter-spacing: 5px;
   opacity: 0;
 }
 
