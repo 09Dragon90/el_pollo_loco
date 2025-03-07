@@ -274,10 +274,6 @@ canvas {
   cursor: pointer;
 }
 
-/* .button-control:hover {
-  background-color: var(--btn-hover);
-} */
-
 .button-control img {
   height: 70%;
   aspect-ratio: 1/1;
@@ -285,6 +281,12 @@ canvas {
 
 .img-big {
   height: 100% !important;
+}
+
+@media only screen and (max-width: 1440px) {
+  .menue-botten-left {
+    display: flex;
+  }
 }
 
 @media only screen and (max-width: 720px) {
@@ -304,9 +306,6 @@ canvas {
   .button-control {
     width: 17%;
     height: auto;
-  }
-  .menue-botten-left {
-    display: flex;
   }
 }
 
