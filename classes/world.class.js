@@ -77,7 +77,7 @@ class World {
    * Ends the game
    */
   endGame() {
-    if (this.allEnemiesDead()) {
+    if (this.endbossDead()) {
       clearInterval(this.idRunIntervall);
       this.stopGame();
       this.overlay = new Overlay(true, this.muteSound);
@@ -275,17 +275,12 @@ class World {
   }
 
   /**
-   * Check all emenies are dead
+   * Check if Endboss dead
    * @returns true or false
    */
-  allEnemiesDead() {
-    let allDead = true;
-    this.level.enemies.forEach((enemy) => {
-      if (!enemy.isDead()) {
-        allDead = false;
-      }
-    });
-    return allDead;
+  endbossDead() {
+    let indexEndboss = this.level.enemies.length - 1;
+    return this.level.enemies[indexEndboss].isDead();
   }
 
   /**
