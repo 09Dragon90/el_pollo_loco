@@ -6,7 +6,7 @@ class MoveableObject extends DrawableObject {
   overGroundY = 430;
   speedX = 0.15;
   speedY = 0;
-
+  bounce = false;
   offsety = 0;
   hitbox = { x: 0, y: 0, height: 0, width: 0 };
   energy = 100;
@@ -53,6 +53,10 @@ class MoveableObject extends DrawableObject {
   bouncer() {
     this.currentImage = 0;
     this.speedY = 10;
+    this.bounce = true;
+    setTimeout(() => {
+      this.bounce = false;
+    }, 1000);
   }
 
   /**

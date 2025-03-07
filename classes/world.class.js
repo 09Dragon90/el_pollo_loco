@@ -96,7 +96,10 @@ class World {
       if (this.character.isHittingFromTop(enemy)) {
         enemy.hit(5);
         this.character.bouncer();
-      } else if (this.character.isColliding(enemy)) {
+      } else if (
+        this.character.isColliding(enemy) &&
+        this.character.bounce == false
+      ) {
         this.character.hit(20);
         this.bars["health"].setPercent(this.character.energy);
       }
