@@ -154,9 +154,7 @@ class World {
    */
   hitEndboss(enemy, bottle) {
     let indexEndboss = this.level.enemies.length - 1;
-    if (!enemy.isHurt()) {
-      this.bottleSplash(bottle);
-    }
+    this.bottleSplash(bottle);
     enemy.hit(5);
     if (!this.level.enemies[indexEndboss].sleep) {
       this.addStatusbarEndboss();

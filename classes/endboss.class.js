@@ -106,7 +106,7 @@ class Endboss extends MoveableObject {
    */
   hit() {
     if (this.sleep) this.wakeUp();
-    if (!this.isDead() && !this.isHurt()) {
+    if (!this.isDead()) {
       this.sounds.hit_sound.play();
       this.energy -= 10;
       this.speedX += 0.05;
