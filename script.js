@@ -22,4 +22,3 @@ function closeDialog(event) {
 
 // TODO
 // Nach Jump ist pepe nicht auf gleicher höhe
-// Buttons Kontext menue unterdrücken

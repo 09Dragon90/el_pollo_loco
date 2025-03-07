@@ -18,13 +18,15 @@ function init() {
  * Add the Touchevent to the buttons
  */
 function addTouchEvent() {
-  const el = document.getElementsByClassName("button-control");
+  const el = document.getElementsByClassName("btn-touch");
   for (let i = 0; i < el.length; i++) {
     el[i].addEventListener("touchstart", (e) => {
+      e.preventDefault();
       setButton(e.currentTarget.id, true);
     });
 
     el[i].addEventListener("touchend", (e) => {
+      e.preventDefault();
       setButton(e.currentTarget.id, false);
     });
   }
