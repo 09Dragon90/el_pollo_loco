@@ -129,12 +129,17 @@ function fullscreen() {
   }
 }
 
-// Speichert den Status im LocalStorage
+/**
+ * Save the Status of mute in Local Storage
+ * @param {boolean} status - Status of mute
+ */
 function setStatus(status) {
   localStorage.setItem("setting", JSON.stringify(status));
 }
 
-// Liest den Status aus dem LocalStorage, gibt false zurück, wenn nichts gespeichert ist
+/**
+ * Load the Status of mute from Local Storage
+ */
 function loadFromLocalStorage() {
   const status = localStorage.getItem("setting");
   return status ? JSON.parse(status) : false;
