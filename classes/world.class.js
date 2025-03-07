@@ -113,8 +113,7 @@ class World {
           enemy.hit(5);
           this.bottleSplash(bottle);
         } else if (bottle.isColliding(enemy) && enemy instanceof Endboss) {
-          this.hitEndboss(enemy);
-          this.bottleSplash(bottle);
+          this.hitEndboss(enemy, bottle);
         }
         this.bars["bottles"].setPercent(this.character.numbersOfBottles);
       });
@@ -138,8 +137,11 @@ class World {
   /**
    * If hit endboss aktivated statusbar
    */
-  hitEndboss(enemy) {
+  hitEndboss(enemy, bottle) {
     let indexEndboss = this.level.enemies.length - 1;
+    if (!enemy.isHurt()) {
+      this.bottleSplash(bottle);
+    }
     enemy.hit(5);
     if (!this.level.enemies[indexEndboss].sleep) {
       this.addStatusbarEndboss();
