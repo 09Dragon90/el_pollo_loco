@@ -19,6 +19,3 @@ function closeDialog(event) {
     dialogRef.close();
   }
 }
-
-// TODO
-// Nach Jump ist pepe nicht auf gleicher höhe

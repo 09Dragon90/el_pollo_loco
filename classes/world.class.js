@@ -100,10 +100,22 @@ class World {
         this.character.isColliding(enemy) &&
         this.character.bounce == false
       ) {
-        this.character.hit(20);
-        this.bars["health"].setPercent(this.character.energy);
+        this.hitWithEnemy(enemy);
       }
     });
+  }
+
+  /**
+   * Check wiche kind of enemy hit the character
+   * @param {Object} enemy - Insatz of enemy
+   */
+  hitWithEnemy(enemy) {
+    if (enemy instanceof Endboss) {
+      this.character.hit(40);
+    } else {
+      this.character.hit(20);
+    }
+    this.bars["health"].setPercent(this.character.energy);
   }
 
   /**
