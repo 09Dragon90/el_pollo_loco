@@ -15,10 +15,11 @@ class ThrowableObject extends MoveableObject {
     "assets/img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png",
   ];
 
-  constructor(x, y, muteSound) {
+  constructor(x, offsetW, y, muteSound, isFlipped) {
     super();
     this.createdId();
-    this.x = x;
+    this.isFlipped = isFlipped;
+    this.calX(x, offsetW);
     this.y = y;
     this.height = 70;
     this.width = 70;
@@ -26,9 +27,22 @@ class ThrowableObject extends MoveableObject {
     this.speedY = 20;
     this.setHitbox();
     this.loadAllImg();
-    this.loadSounds();
+    this.loadSounds(muteSound);
     this.throw();
     this.applyGravity();
+  }
+
+  /**
+   * Calculated the x coodinats of start for bottle
+   * @param {Number} x - X coodinats of character
+   * @param {Number} offsetW - Width of character
+   */
+  calX(x, offsetW) {
+    if (this.isFlipped) {
+      this.x = x - 20;
+    } else {
+      this.x = x + offsetW - 50;
+    }
   }
 
   /**
@@ -43,7 +57,7 @@ class ThrowableObject extends MoveableObject {
   /**
    * Load all Sounds
    */
-  loadSounds() {
+  loadSounds(muteSound) {
     this.createdSound("assets/audio/glassBroken.mp3", "splash_sound");
     this.muteSounds(muteSound);
   }
@@ -54,11 +68,30 @@ class ThrowableObject extends MoveableObject {
   throw() {
     this.stoppableInterval(
       setInterval(() => {
-        this.x += 15;
-        this.hitbox.x += 15;
+        if (this.isFlipped) {
+          this.throwLeft();
+        } else {
+          this.throwRight();
+        }
         this.animatedImages(this.imagesRotaition);
       }, 1000 / 25)
     );
+  }
+
+  /**
+   * Throw the bottle to the right
+   */
+  throwRight() {
+    this.x += 15;
+    this.hitbox.x += 15;
+  }
+
+  /**
+   * Throw the bottle to the left
+   */
+  throwLeft() {
+    this.x -= 15;
+    this.hitbox.x -= 15;
   }
 
   /**

@@ -19,5 +19,3 @@ function closeDialog(event) {
     dialogRef.close();
   }
 }
-
-// TODO Flasche auch nach links werfen

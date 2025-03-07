@@ -223,9 +223,11 @@ class Character extends MoveableObject {
     ) {
       this.world.bottles.push(
         new ThrowableObject(
-          this.x + this.width - 50,
+          this.x,
+          this.width,
           this.y + this.height / 2,
-          this.world.muteSound
+          this.world.muteSound,
+          this.isFlipped
         )
       );
       this.numbersOfBottles -= 5;
