@@ -111,17 +111,13 @@ class Character extends MoveableObject {
     this.stoppableInterval(
       setInterval(() => {
         if (this.isDead()) {
-          this.stopSnoring();
           this.playAnimationsDead();
         } else if (this.isHurt()) {
-          this.stopSnoring();
           this.animatedImages(this.imagesHurt);
           this.sounds.pain_sound.play();
         } else if (this.isOverGroung()) {
-          this.stopSnoring();
           this.animatedImages(this.imagesJump);
         } else if (this.world.keybord.Right || this.world.keybord.Left) {
-          this.stopSnoring();
           this.animatedImages(this.imagesWalk);
         } else if (this.timeLongIdle > 60) {
           this.animatedImages(this.imagesIdleLong);
@@ -189,6 +185,7 @@ class Character extends MoveableObject {
       this.sounds.walking_sound.play();
       this.isFlipped = false;
       this.moveRight();
+      this.stopSnoring();
     }
   }
 
@@ -200,6 +197,7 @@ class Character extends MoveableObject {
       this.sounds.walking_sound.play();
       this.isFlipped = true;
       this.moveLeft();
+      this.stopSnoring();
     }
   }
 
@@ -209,6 +207,7 @@ class Character extends MoveableObject {
   movementJump() {
     if (this.world.keybord.Up && !this.isOverGroung() && !this.isDead()) {
       this.jump();
+      this.stopSnoring();
       this.sounds.jumping_sound.play();
     }
   }
@@ -231,6 +230,7 @@ class Character extends MoveableObject {
       );
       this.numbersOfBottles -= 5;
       this.bottleIsThrow = true;
+      this.stopSnoring();
       setTimeout(() => {
         this.bottleIsThrow = false;
       }, 100);
