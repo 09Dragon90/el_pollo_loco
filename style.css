@@ -283,7 +283,7 @@ canvas {
   height: 100% !important;
 }
 
-@media only screen and (max-width: 1440px) {
+@media screen and (pointer: coarse) {
   .menue-botten-left {
     display: flex;
   }
